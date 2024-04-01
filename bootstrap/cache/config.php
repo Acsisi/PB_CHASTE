@@ -198,8 +198,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\storage\\framework/cache/data',
-        'lock_path' => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\storage\\framework/cache/data',
+        'path' => 'C:\\xampp\\htdocs\\PB_CHASTE\\storage\\framework/cache/data',
+        'lock_path' => 'C:\\xampp\\htdocs\\PB_CHASTE\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -372,13 +372,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\storage\\app',
+        'root' => 'C:\\xampp\\htdocs\\PB_CHASTE\\storage\\app',
         'throw' => false,
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\storage\\app/public',
+        'root' => 'C:\\xampp\\htdocs\\PB_CHASTE\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -398,7 +398,7 @@
     ),
     'links' => 
     array (
-      'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\public\\storage' => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\storage\\app/public',
+      'C:\\xampp\\htdocs\\PB_CHASTE\\public\\storage' => 'C:\\xampp\\htdocs\\PB_CHASTE\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -439,14 +439,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\PB_CHASTE\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\PB_CHASTE\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -511,7 +511,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\PB_CHASTE\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -578,7 +578,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\resources\\views/vendor/mail',
+        0 => 'C:\\xampp\\htdocs\\PB_CHASTE\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -699,7 +699,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\storage\\framework/sessions',
+    'files' => 'C:\\xampp\\htdocs\\PB_CHASTE\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -719,9 +719,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\resources\\views',
+      0 => 'C:\\xampp\\htdocs\\PB_CHASTE\\resources\\views',
     ),
-    'compiled' => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE\\storage\\framework\\views',
+    'compiled' => 'C:\\xampp\\htdocs\\PB_CHASTE\\storage\\framework\\views',
   ),
   'flare' => 
   array (
@@ -806,7 +806,7 @@
     array (
     ),
     'enable_runnable_solutions' => NULL,
-    'remote_sites_path' => 'C:\\xampp\\htdocs\\CHASTE_V2\\CHASTE',
+    'remote_sites_path' => 'C:\\xampp\\htdocs\\PB_CHASTE',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
     'settings_file_path' => '',

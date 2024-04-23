@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 01, 2024 at 10:28 AM
+-- Generation Time: Apr 23, 2024 at 03:52 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -59,6 +59,9 @@ CREATE TABLE `d_kamar` (
   `h_kamar_id` int(11) NOT NULL,
   `kamar_id` int(11) NOT NULL,
   `harga` int(11) NOT NULL,
+  `tgl_mulai` date DEFAULT NULL,
+  `foto_ktp` varchar(255) DEFAULT NULL,
+  `foto_kk` varchar(255) DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -66,8 +69,9 @@ CREATE TABLE `d_kamar` (
 -- Dumping data for table `d_kamar`
 --
 
-INSERT INTO `d_kamar` (`d_kamar_id`, `h_kamar_id`, `kamar_id`, `harga`, `status`) VALUES
-(1, 1, 1, 1200000, 1);
+INSERT INTO `d_kamar` (`d_kamar_id`, `h_kamar_id`, `kamar_id`, `harga`, `tgl_mulai`, `foto_ktp`, `foto_kk`, `status`) VALUES
+(1, 1, 1, 1200000, NULL, NULL, NULL, 1),
+(25, 35, 5, 900000, '2024-04-24', 'penyewa/ktp/nqqzynxy4n871.jpg', 'penyewa/kk/5712_9309_8882_SVP002-L.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -117,7 +121,8 @@ CREATE TABLE `h_kamar` (
 --
 
 INSERT INTO `h_kamar` (`h_kamar_id`, `user_id`, `penyewa_id`, `total`, `created_at`, `updated_at`, `status`) VALUES
-(1, 1, 12, 1200000, '2024-01-05 08:50:19', '2024-01-05 08:50:19', 1);
+(1, 1, 12, 1200000, '2024-01-05 08:50:19', '2024-01-05 08:50:19', 1),
+(35, 1, 26, 900000, '2024-04-23 06:51:15', '2024-04-23 06:51:15', 1);
 
 -- --------------------------------------------------------
 
@@ -149,7 +154,7 @@ INSERT INTO `kamar` (`kamar_id`, `user_id`, `penyewa_id`, `nama`, `foto`, `harga
 (2, 1, NULL, 'A-12', 'kamar/kos1.png', 1200000, 'First floor room with AC. Close to the bathroom.', 'AC', '2023-12-08 09:20:22', '2023-12-08 09:14:45', 1),
 (3, 1, NULL, 'A-13', 'kamar/kos1.png', 1200000, 'First floor room with AC. Close to the stairs to 2nd floor.', 'AC', '2023-12-08 09:21:53', '2023-12-08 09:14:45', 1),
 (4, 1, NULL, 'A-14', 'kamar/kos1.png', 1200000, 'First floor room with AC. Close to the water dispenser.', 'AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
-(5, 1, NULL, 'B-21', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the stairs to 1st floor.', 'Non-AC', '2024-04-01 08:19:37', '2023-12-08 09:14:45', 1),
+(5, 1, 26, 'B-21', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the stairs to 1st floor.', 'Non-AC', '2024-04-23 13:51:15', '2023-12-08 09:14:45', 2),
 (6, 1, NULL, 'B-22', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the bathroom.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
 (7, 1, NULL, 'B-23', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the water dispenser.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
 (8, 1, NULL, 'B-24', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the corner.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1);
@@ -281,7 +286,7 @@ ALTER TABLE `d_bulan`
 -- AUTO_INCREMENT for table `d_kamar`
 --
 ALTER TABLE `d_kamar`
-  MODIFY `d_kamar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `d_kamar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `h_bulan`
@@ -293,7 +298,7 @@ ALTER TABLE `h_bulan`
 -- AUTO_INCREMENT for table `h_kamar`
 --
 ALTER TABLE `h_kamar`
-  MODIFY `h_kamar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `h_kamar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `kamar`

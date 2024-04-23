@@ -72,7 +72,8 @@ Route::middleware('authen:user')->group(function () {
 	// Route::get('/user/history/food/{id}', [PageController::class, 'user_history_detail_food']);
 
 	Route::post('/payment', [MidtransController::class, 'payment'])->name('payment');
-	Route::get('/payment/success', [MidtransController::class, 'payment_success']);
+	Route::post('/payment/success', [MidtransController::class, 'payment_success'])->name('payment-success');
+	Route::get('/payment/success', [MidtransController::class, 'payment_success_get']);
 	Route::get('/payment/failed', [MidtransController::class, 'payment_fail']);
 	// Route::post('/payment-notif', [MidtransController::class, 'payment_notif'])->name('payment-notif');
 });

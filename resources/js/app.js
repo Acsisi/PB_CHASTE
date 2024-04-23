@@ -5,3 +5,5 @@ require('./bootstrap');
 require('./custom')
 
 import 'preline'
+import '@fortawesome/fontawesome-free/css/all.css';
+

@@ -1,6 +1,7 @@
 @extends('main')
 @section('content')
 
+{{-- testing --}}
 <!-- Blog Article -->
 <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-10">
     <div class="max-w-2xl">
@@ -14,7 +15,7 @@
             Room {{$kamar->nama}}
           </p>
           <p class="mt-1 text-xl text-gray-800 ">
-            Rp. 
+            Rp.
             @php
               echo number_format($kamar->harga , 0, ',', '.');
             @endphp
@@ -44,7 +45,7 @@
                           AC
                       </span>
                       </li>';
-              }  
+              }
             @endphp
 
             <li class="flex space-x-3">

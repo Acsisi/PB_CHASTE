@@ -19,11 +19,10 @@
 
           <!-- Content -->
           <div class="space-y-5 md:space-y-8">
-
             <form action="{{ route('search-history') }}" method="GET" style="float:right;">
               <input type="text" name="search" value="{{ $search }}" placeholder="Search..." style="background-color:rgb(223, 223, 223); padding:10px; border-radius:10px;">
               <Button type="submit" class="py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gray-600 text-white hover:bg-gray-700 disabled:opacity-50 disabled:pointer-events-none">
-                Submit
+                Filter
               </Button>
             </form>
             <br><br><br>

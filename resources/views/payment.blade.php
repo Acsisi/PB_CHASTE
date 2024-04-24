@@ -14,6 +14,9 @@
 <form id="paymentForm" action="{{ route('payment-success') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="center" style="border: 2px solid #ccc; padding: 10px 0px 20px 20px;">
+        <a href="{{ URL::previous() }}" class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-black bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+            Back
+        </a>
         <p class="mt-1 text-black font-medium">
             {{-- Bayar Rp{{number_format($kamar->harga , 0, ',', '.')}} untuk kamar kos {{$kamar->nama}}? --}}
             <p style="font-size: 24px;margin-bottom:10px;"><b>Rp{{number_format($kamar->harga , 0, ',', '.')}}/bulan</b></p>

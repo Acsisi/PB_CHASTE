@@ -1,9 +1,14 @@
 @extends('main')
 @section('content')
 
+<!-- PDF CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <!-- Modal -->
 {{-- <div id="hs-ai-modal" class="hs-overlay w-full h-full fixed z-[60] overflow-y-auto pointer-events-none"> --}}
-    <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-10">
+    <div id="pdf" class="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-10">
       <div class="relative flex flex-col bg-white shadow-lg  pointer-events-auto ">
         <div class="relative min-h-[8rem] bg-gray-900 text-center-t-xl">
           <!-- Close Button -->
@@ -93,20 +98,20 @@
           </div>
 
           <!-- Button -->
-          <div class="mt-5 flex justify-end gap-x-2">
-            <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm " href="#">
+          <div id="btn-pdf-print" class="mt-5 flex justify-end gap-x-2">
+            <button onclick="generatePDF()" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm">
               <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
               Invoice PDF
-            </a>
-            <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="#">
+            </button>
+            <button onclick="generatePrint()" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="#">
               <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
               Print
-            </a>
+            </button>
           </div>
           <!-- End Buttons -->
 
           <div class="mt-5 sm:mt-10">
-            <p class="text-sm text-gray-500">If you have any questions, please contact us at <a class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium" href="#">example@site.com</a> or call at <a class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium" href="tel:+1898345492">+1 898-34-5492</a></p>
+            <p class="text-sm text-gray-500">If you have any questions, please contact us at <a class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium" href="https://api.whatsapp.com/send?phone=6282232323656" target="_blank">+62 822-3232-3656</a></p>
           </div>
         </div>
         <!-- End Body -->
@@ -116,3 +121,53 @@
   <!-- End Modal -->
 
 @endsection
+
+<!-- PDF Function -->
+<script type="text/javascript">
+  function generatePDF() {
+      const btnPdfPrint = document.getElementById('btn-pdf-print');
+      btnPdfPrint.style.visibility = 'hidden';
+
+      const x = document.documentElement.clientWidth-530;
+      const y = document.documentElement.clientHeight-210;
+
+      setTimeout(function() {
+          const { jsPDF } = window.jspdf;
+
+          let doc = new jsPDF('p', 'px', [x, y]);
+          let pdfjs = document.querySelector('#pdf');
+
+          doc.html(pdfjs, {
+              callback: function(doc) {
+                  doc.save("invoice.pdf");
+                  btnPdfPrint.style.visibility = 'visible';
+              }
+          });   
+      }, 100);
+  }               
+</script>  
+
+<!-- Print Function -->
+<script type="text/javascript">
+  function generatePrint() {
+      const btnPdfPrint = document.getElementById('btn-pdf-print');
+      btnPdfPrint.style.visibility = 'hidden';
+
+      const x = document.documentElement.clientWidth-530;
+      const y = document.documentElement.clientHeight-210;
+
+      setTimeout(function() {
+          const { jsPDF } = window.jspdf;
+
+          let doc = new jsPDF('p', 'px', [x, y]);
+          let pdfjs = document.querySelector('#pdf');
+
+          doc.html(pdfjs, {
+              callback: function(doc) {
+                  window.print();
+                  btnPdfPrint.style.visibility = 'visible';
+              }
+          });   
+      }, 100);
+  }               
+</script>  

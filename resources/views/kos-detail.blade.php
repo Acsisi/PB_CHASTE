@@ -166,7 +166,7 @@
 
     <h3 class="text-2xl font-semibold mt-5">Maps : </h3>
     <div class="grid grid-cols-2 gap-x-10 mt-10">
-        <img class="w-full object-cover rounded-xl" src="{{ Storage::url("/kamar/GPS.png") }}" alt="">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.5508163972804!2d112.75609507500002!3d-7.291835892715616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fbe715469163%3A0x4c971e01042a26c5!2sChaste%20Kost%20%26%20Pujasera!5e0!3m2!1sen!2sid!4v1713946914959!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" class="w-full object-cover rounded-xl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
         <img class="w-full object-cover rounded-xl" src="{{ Storage::url("/kamar/LOC.png") }}" alt="">
 

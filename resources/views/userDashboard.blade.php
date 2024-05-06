@@ -116,7 +116,7 @@
         <img class="mt-10 object-cover rounded-3xl" src="{{ Storage::url("/kamar/galon.jpg") }}" alt="Image Description">
         <p class="text-lg mt-5">Rp. 20.000/galon</p>
         <button type="submit" name="id" value="{{$kamar->kamar_id}}" class="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-spacing-3 bg-blue-400 text-white hover:bg-blue-700 hover:text-white">
-            Make Purchase Now!
+            Make Galin Purchase !
             <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </button>
     </div>

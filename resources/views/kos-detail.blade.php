@@ -23,8 +23,54 @@
         </blockquote>
 
         <figure>
-          <img class="w-1/2 m-auto object-cover rounded-xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description">
+          <img class="w-1/2 mx-auto object-cover rounded-xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description">
+          {{-- <div class="grid grid-cols-2 w-full mt-10">
+            <div>
+                <img class="w-1/2  object-cover rounded-xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description">
+            </div>
+
+            <div>
+                <img class="w-1/2  object-cover rounded-xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description">
+            </div>
+          </div> --}}
+
         </figure>
+
+        <div class="container mx-auto">
+            <!-- Slider -->
+            <div data-hs-carousel='{
+                "loadingClasses": "opacity-0"
+            }' class="relative">
+            <div class="hs-carousel relative overflow-hidden w-full min-h-96 bg-white rounded-lg">
+                <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
+                <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full bg-gray-100 p-6 ">
+                    <span class="self-center text-4xl text-gray-800 transition duration-700">First slide</span>
+                    </div>
+                </div>
+                <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full bg-gray-200 p-6 ">
+                    <span class="self-center text-4xl text-gray-800 transition duration-700">Second slide</span>
+                    </div>
+                </div>
+                <div class="hs-carousel-slide">
+                    <div class="flex justify-center h-full bg-gray-300 p-6 ">
+                    <span class="self-center text-4xl text-gray-800 transition duration-700">Third slide</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2">
+                <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+            </div>
+            </div>
+            <!-- End Slider -->
+        </div>
+
+
 
 
         <!-- Icon Blocks -->
@@ -35,8 +81,8 @@
         <i class="fa-solid fa-money-bill fa-2x flex-shrink-0 size-8 text-gray-800 mt-4 me-6" ></i>
         <div>
           <div>
-            <h3 class="block font-bold text-gray-800 ">Harga dijamin murah</h3>
-            <p class="text-gray-600 ">Bebas biaya biaya lain seperti biaya air dan listrik</p>
+            <h3 class="block font-bold text-gray-800 ">Affordable Price</h3>
+            <p class="text-gray-600 ">Free charge of electricity and water</p>
           </div>
 
 
@@ -51,8 +97,8 @@
 
         <div>
           <div>
-            <h3 class="block font-bold text-gray-800">Foodcourt didalam kos</h3>
-            <p class="text-gray-600">Foodcourt dengan berbagai pilihan stall di dalam area kos</p>
+            <h3 class="block font-bold text-gray-800">Canteen in Kost Area</h3>
+            <p class="text-gray-600">Canteen with several choice of stall</p>
           </div>
 
 
@@ -66,109 +112,106 @@
 
         <div>
           <div>
-            <h3 class="block font-bold text-gray-800">Lokasi strategis </h3>
-            <p class="text-gray-600">Lokasi strategis di tengah kota Surabaya</p>
+            <h3 class="block font-bold text-gray-800">Strategic Location</h3>
+            <p class="text-gray-600">Located in the heart of Surabaya City</p>
           </div>
 
         </div>
       </a>
       <!-- End Card -->
 
-      <div class="">
-        <h3 class="text-2xl font-semibold mt-5">Fasilitas Kamar : </h3>
-        <ul class="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 mt-5">
-
-            @php
-              if($kamar->AC == "AC"){
-                echo '<li class="flex space-x-3">
-                      <span class="h-5 w-5 flex justify-center items-center rounded-full bg-blue-600 text-white">
-                          <svg class="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                      </span>
-
-                      <span class="text-gray-800">
-                          AC
-                      </span>
-                      </li>';
-              }
-            @endphp
-
-            <li class="flex space-x-3">
-                <i class="fa-solid fa-bed"></i>
-            <span class="text-gray-800">
-                Bed
-            </span>
-            </li>
-
-            <li class="flex space-x-3">
-            <span class="h-5 w-5 flex justify-center items-center rounded-full bg-blue-600 text-white">
-                <svg class="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-            <span class="text-gray-800">
-                Desk
-            </span>
-            </li>
-
-            <li class="flex space-x-3">
-            <span class="h-5 w-5 flex justify-center items-center rounded-full bg-blue-600 text-white">
-                <svg class="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-            <span class="text-gray-800">
-                Cupboard
-            </span>
-            </li>
-        </ul>
-
-        <h3 class="text-2xl font-semibold mt-5">Fasilitas Umum : </h3>
-        <ul class="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 mt-5">
-
-            @php
-              if($kamar->AC == "AC"){
-                echo '<li class="flex space-x-3">
-                      <span class="h-5 w-5 flex justify-center items-center rounded-full bg-blue-600 text-white">
-                          <svg class="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                      </span>
-
-                      <span class="text-gray-800">
-                          AC
-                      </span>
-                      </li>';
-              }
-            @endphp
-
-            <li class="flex space-x-3">
-                <i class="fa-solid fa-bed"></i>
-            <span class="text-gray-800">
-                Bed
-            </span>
-            </li>
-
-            <li class="flex space-x-3">
-            <span class="h-5 w-5 flex justify-center items-center rounded-full bg-blue-600 text-white">
-                <svg class="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-            <span class="text-gray-800">
-                Desk
-            </span>
-            </li>
-
-            <li class="flex space-x-3">
-            <span class="h-5 w-5 flex justify-center items-center rounded-full bg-blue-600 text-white">
-                <svg class="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-            <span class="text-gray-800">
-                Cupboard
-            </span>
-            </li>
-        </ul>
-
-      </div>
     </div>
 
-    <h3 class="text-2xl font-semibold mt-5">Maps : </h3>
+    <div class="grid grid-cols-2 w-full mt-10">
+      <div class="">
+          <h3 class="text-2xl font-semibold mt-5">Room Facilities : </h3>
+          <ul class="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 mt-5">
+
+            @if ($kamar->AC == "AC")
+            <li class="flex space-x-3">
+                <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                  <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/aircon.png") }}" alt="">
+                </span>
+
+                <span class="text-gray-800">
+                    AC
+                </span>
+            </li>
+            @endif
+            <li class="flex space-x-3">
+            <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/double-bed.png") }}" alt="">
+            </span>
+            <span class="text-gray-800">
+                Bed
+            </span>
+            </li>
+
+            <li class="flex space-x-3">
+            <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/desk.png") }}" alt="">
+            </span>
+            <span class="text-gray-800">
+                Desk
+            </span>
+            </li>
+
+            <li class="flex space-x-3">
+            <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/cupboard.png") }}" alt="">
+            </span>
+            <span class="text-gray-800">
+                Cupboard
+            </span>
+            </li>
+          </ul>
+      </div>
+      <div class="">
+          <h3 class="text-2xl font-semibold mt-5">Public Facilities : </h3>
+          <ul class="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 mt-5">
+              <li class="flex space-x-3">
+              <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                  <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/rice.png") }}" alt="">
+              </span>
+              <span class="text-gray-800">
+                  Free Rice Everyday
+              </span>
+              </li>
+
+              <li class="flex space-x-3">
+                <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                    <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/motorcycle.png") }}" alt="">
+                </span>
+                <span class="text-gray-800">
+                    Motorcycle Parking
+                </span>
+                </li>
+
+              <li class="flex space-x-3">
+              <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                  <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/shower.png") }}" alt="">
+              </span>
+              <span class="text-gray-800">
+                  Public Bathroom
+              </span>
+              </li>
+
+              <li class="flex space-x-3">
+              <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                  <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/kitchen-set.png") }}" alt="">
+              </span>
+              <span class="text-gray-800">
+                  Kitchen
+              </span>
+              </li>
+          </ul>
+      </div>
+    </div>
+    <h3 class="text-2xl font-semibold mt-10">Maps : </h3>
     <div class="grid grid-cols-2 gap-x-10 mt-10">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.5508163972804!2d112.75609507500002!3d-7.291835892715616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fbe715469163%3A0x4c971e01042a26c5!2sChaste%20Kost%20%26%20Pujasera!5e0!3m2!1sen!2sid!4v1713946914959!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" class="w-full object-cover rounded-xl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-        <img class="w-full object-cover rounded-xl" src="{{ Storage::url("/kamar/LOC.png") }}" alt="">
+        <img class="w-full object-cover rounded-xl" src="{{ Storage::url("/kamar/loc.png") }}" alt="">
 
     </div>
 
@@ -190,7 +233,7 @@
         @csrf
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-10">
           <button type="submit" name="id" value="{{$kamar->kamar_id}}" class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-            Make Reservation
+            Nake Reservation Now!
             <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
           </button>
         </div>

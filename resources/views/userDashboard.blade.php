@@ -20,9 +20,9 @@
 
     $month = $currentDate->format('F');
     $year = $currentDate->year;
-    
+
     if($showNotif && !$cekPembayaran && $listKamar){
-      echo 
+      echo
       '<div class="bg-gradient-to-r from-red-500 via-purple-400 to-blue-500">
         <div class="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
           <!-- Grid -->
@@ -40,7 +40,9 @@
           </div>
           <!-- End Grid -->
         </div>
-      </div>';
+      </div>
+
+      ';
     }
 @endphp
 <!-- End Announcement Banner -->
@@ -51,29 +53,23 @@
         <div>
         <h2 class="text-4xl font-semibold text-gray-800">Hello, {{Session::get('login_username')}}</h2>
         </div>
+        <div>
+            <button class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-500 text-white hover:bg-red-600 disabled:opacity-50 disabled:pointer-events-none">Pay Monthly Rent!</button>
+        </div>
     </div>
 
     <div class="max-w-2xl mb-10 lg:mb-14 mt-10">
         <div class="max-w-2xl">
 
-
           <!-- Content -->
           <div class="space-y-5 md:space-y-8">
-
-            <blockquote class="">
-              <p class="text-2xl font-semibold mt-5 text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal ">
-                My Rooms
-
-              </p>
-            </blockquote>
-
-            <form action="{{ route('payment') }}" method="post">
+            {{-- <form action="{{ route('payment') }}" method="post">
               @csrf
               @foreach ($listKamar as $kamar)
                 <figure>
                   <img class=" object-cover rounded-xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description">
                   <figcaption class="mt-3 text-sm text-center text-gray-500">
-                    Room {{$kamar->nama}} 
+                    Room {{$kamar->nama}}
                     @php
                       if($showNotif && !$cekPembayaran && $listKamar){
                         $cek = 0;
@@ -95,12 +91,38 @@
                 </figure>
                 <br>
               @endforeach
-            </form>
+            </form> --}}
         </div>
       </div>
       <!-- End Blog Article -->
   </div>
 
+  {{-- new code design --}}
+
+  <blockquote class="">
+    <p class="text-2xl font-semibold  text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal ">
+      My Rooms
+
+    </p>
+  </blockquote>
+
+  <div class="grid grid-cols-2 w-full mt-5">
+    @foreach ($listKamar as $kamar)
+    <div>
+        <img class=" object-cover rounded-3xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description">
+    </div>
+    <div class="mx-auto">
+        <p class="text-xl font-semibold">19L AQUA GALON</p>
+        <img class="mt-10 object-cover rounded-3xl" src="{{ Storage::url("/kamar/galon.jpg") }}" alt="Image Description">
+        <p class="text-lg mt-5">Rp. 20.000/galon</p>
+        <button type="submit" name="id" value="{{$kamar->kamar_id}}" class="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-spacing-3 bg-blue-400 text-white hover:bg-blue-700 hover:text-white">
+            Make Purchase Now!
+            <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+    </div>
+    @endforeach
+
+</div>
 
 
 @endsection

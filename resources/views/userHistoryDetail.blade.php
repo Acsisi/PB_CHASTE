@@ -43,7 +43,7 @@
         <div class="p-4 sm:p-7 overflow-y-auto">
           <div class="text-center">
             <h3 class="text-lg font-semibold text-gray-800 ">
-              Invoice from Chaste
+              Invoice dari Chaste
             </h3>
             <p class="text-sm text-gray-500">
               Invoice Kamar #{{$HKamar->h_kamar_id}}
@@ -56,13 +56,13 @@
           <!-- Grid -->
           <div class="mt-5 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 gap-5">
             <div>
-              <span class="block text-xs uppercase text-gray-500">Amount paid:</span>
+              <span class="block text-xs uppercase text-gray-500">Jumlah pembayaran:</span>
               <span class="block text-sm font-medium text-gray-800 ">Rp {{number_format($HKamar->total , 0, ',', '.')}}</span>
             </div>
             <!-- End Col -->
 
             <div>
-              <span class="block text-xs uppercase text-gray-500">Date paid:</span>
+              <span class="block text-xs uppercase text-gray-500">Tanggal pembayaran:</span>
               <span class="block text-sm font-medium text-gray-800 ">{{$HKamar->created_at->format('j M Y')}}, {{$HKamar->created_at->format('H:i:s')}}</span>
             </div>
             <!-- End Col -->
@@ -73,12 +73,12 @@
           <!-- End Grid -->
 
           <div class="mt-5 sm:mt-10">
-            <h4 class="text-xs font-semibold uppercase text-gray-800 ">Summary</h4>
+            <h4 class="text-xs font-semibold uppercase text-gray-800 ">Ringkasan</h4>
 
             <ul class="mt-3 flex flex-col">
               <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg ">
                 <div class="flex items-center justify-between w-full">
-                  <span>Rent Payment</span>
+                  <span>Pembayaran Sewa</span>
                   <span>Rp {{number_format($DKamar->harga, 0, ',', '.')}}</span>
                 </div>
               </li>
@@ -90,7 +90,7 @@
               </li> --}}
               <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-semibold bg-gray-50 border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg ">
                 <div class="flex items-center justify-between w-full">
-                  <span>Amount paid</span>
+                  <span>Jumlah yang dibayarkan</span>
                   <span>Rp {{number_format($HKamar->total , 0, ',', '.')}}</span>
                 </div>
               </li>
@@ -111,7 +111,7 @@
           <!-- End Buttons -->
 
           <div class="mt-5 sm:mt-10">
-            <p class="text-sm text-gray-500">If you have any questions, please contact us at <a class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium" href="https://api.whatsapp.com/send?phone=6282232323656" target="_blank">+62 822-3232-3656</a></p>
+            <p class="text-sm text-gray-500">Jika Anda memiliki pertanyaan, silakan hubungi kami di <a class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium" href="https://api.whatsapp.com/send?phone=6282232323656" target="_blank">+62 822-3232-3656</a></p>
           </div>
         </div>
         <!-- End Body -->

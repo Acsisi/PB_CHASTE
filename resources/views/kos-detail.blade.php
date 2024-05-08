@@ -12,7 +12,7 @@
 
         <blockquote class="text-start p-4 sm:px-7">
           <p class="text-9xl font-semibold mt-5 text-gray-800 md:text-2xl md:leading-normal xl:text-4xl xl:leading-normal ">
-            Room {{$kamar->nama}}
+            Kamar {{$kamar->nama}}
           </p>
           <p class="mt-1 text-2xl text-gray-800 ">
             Rp.
@@ -81,8 +81,8 @@
         <i class="fa-solid fa-money-bill fa-2x flex-shrink-0 size-8 text-gray-800 mt-4 me-6" ></i>
         <div>
           <div>
-            <h3 class="block font-bold text-gray-800 ">Affordable Price</h3>
-            <p class="text-gray-600 ">Free charge of electricity and water</p>
+            <h3 class="block font-bold text-gray-800 ">Harga Terjangkau</h3>
+            <p class="text-gray-600 ">Gratis biaya listrik dan air</p>
           </div>
 
 
@@ -97,8 +97,8 @@
 
         <div>
           <div>
-            <h3 class="block font-bold text-gray-800">Canteen in Kost Area</h3>
-            <p class="text-gray-600">Canteen with several choice of stall</p>
+            <h3 class="block font-bold text-gray-800">Kantin di Area Kost</h3>
+            <p class="text-gray-600">Dengan beberapa pilihan tenant</p>
           </div>
 
 
@@ -112,8 +112,8 @@
 
         <div>
           <div>
-            <h3 class="block font-bold text-gray-800">Strategic Location</h3>
-            <p class="text-gray-600">Located in the heart of Surabaya City</p>
+            <h3 class="block font-bold text-gray-800">Lokasi Strategis</h3>
+            <p class="text-gray-600">Terletak di pusat Kota Surabaya</p>
           </div>
 
         </div>
@@ -124,7 +124,7 @@
 
     <div class="grid grid-cols-2 w-full mt-10">
       <div class="">
-          <h3 class="text-2xl font-semibold mt-5">Room Facilities : </h3>
+          <h3 class="text-2xl font-semibold mt-5">Fasilitas Kamar: </h3>
           <ul class="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 mt-5">
 
             @if ($kamar->AC == "AC")
@@ -143,7 +143,7 @@
                 <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/double-bed.png") }}" alt="">
             </span>
             <span class="text-gray-800">
-                Bed
+                Tempat Tidur
             </span>
             </li>
 
@@ -152,7 +152,7 @@
                 <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/desk.png") }}" alt="">
             </span>
             <span class="text-gray-800">
-                Desk
+                Meja Tulis
             </span>
             </li>
 
@@ -161,20 +161,20 @@
                 <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/cupboard.png") }}" alt="">
             </span>
             <span class="text-gray-800">
-                Cupboard
+                Lemari
             </span>
             </li>
           </ul>
       </div>
       <div class="">
-          <h3 class="text-2xl font-semibold mt-5">Public Facilities : </h3>
+          <h3 class="text-2xl font-semibold mt-5">Fasilitas Publik: </h3>
           <ul class="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 mt-5">
               <li class="flex space-x-3">
               <span class="h-5 w-5 flex justify-center items-center rounded-full ">
                   <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/rice.png") }}" alt="">
               </span>
               <span class="text-gray-800">
-                  Free Rice Everyday
+                  Nasi Gratis Setiap Hari
               </span>
               </li>
 
@@ -183,7 +183,7 @@
                     <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/motorcycle.png") }}" alt="">
                 </span>
                 <span class="text-gray-800">
-                    Motorcycle Parking
+                  Parkir Sepeda Motor
                 </span>
                 </li>
 
@@ -192,7 +192,7 @@
                   <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/shower.png") }}" alt="">
               </span>
               <span class="text-gray-800">
-                  Public Bathroom
+                  Kamar Mandi
               </span>
               </li>
 
@@ -201,7 +201,7 @@
                   <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/kitchen-set.png") }}" alt="">
               </span>
               <span class="text-gray-800">
-                  Kitchen
+                  Dapur
               </span>
               </li>
           </ul>
@@ -233,7 +233,7 @@
         @csrf
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-10">
           <button type="submit" name="id" value="{{$kamar->kamar_id}}" class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-            Nake Reservation Now!
+            Buat Reservasi
             <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
           </button>
         </div>
@@ -241,7 +241,7 @@
       @else
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-10" style="pointer-events: none;">
           <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-slate-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="kos-invoice">
-            This Room is Taken
+            Ruangan ini Sudah Diambil
           </a>
         </div>
       @endif

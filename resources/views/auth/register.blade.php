@@ -128,11 +128,8 @@
       <div class="md:pe-8 md:w-1/2 xl:pe-0 xl:w-5/12">
         <!-- Title -->
         <h1 class="text-3xl text-gray-800 font-bold md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight ">
-          Register to your <span class="text-blue-600" >chaste</span> account
+          Register Akun <span class="text-blue-600" >Chaste</span> Anda
         </h1>
-        <p class="mt-3 text-base text-gray-500">
-          Built on standard web technology, teams use Preline to build beautiful cross-platform hybrid apps in a fraction of the time.
-        </p>
         <!-- End Title -->
 
 
@@ -155,20 +152,20 @@
             </div>
 
             <div class="mb-4">
-                <label for="hs-hero-email-2" class="block text-sm font-medium"><span class="sr-only">Email address</span></label>
-                <input type="email" name="email" id="hs-hero-email-2" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Email address">
+                <label for="hs-hero-email-2" class="block text-sm font-medium"><span class="sr-only">Email</span></label>
+                <input type="email" name="email" id="hs-hero-email-2" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Email">
                 @error('email') <p style="color: red" class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
             </div>
 
             <div class="mb-4">
-                <label for="hs-hero-email-2" class="block text-sm font-medium"><span class="sr-only">NO KTP / NIK</span></label>
-                <input type="tezt" name="ktp" id="hs-hero-nik-2" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="KTP">
+                <label for="hs-hero-email-2" class="block text-sm font-medium"><span class="sr-only">No KTP / NIK</span></label>
+                <input type="tezt" name="ktp" id="hs-hero-nik-2" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="No KTP">
                 @error('ktp') <p style="color: red" class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
             </div>
 
             <div class="mb-4">
-                <label for="hs-hero-email-2" class="block text-sm font-medium"><span class="sr-only">Phone</span></label>
-                <input type="text" name="no_telp" id="hs-hero-phone-2" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Phone">
+                <label for="hs-hero-email-2" class="block text-sm font-medium"><span class="sr-only">No Telepon / HP</span></label>
+                <input type="text" name="no_telp" id="hs-hero-phone-2" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="No Telepon / HP">
                 @error('no_telp') <p style="color: red" class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
             </div>
 
@@ -181,8 +178,7 @@
             <div class="form-check form-check-info text-start">
                 <input class="form-check-input" type="checkbox" name="terms" id="flexCheckDefault" >
                 <label class="form-check-label" for="flexCheckDefault">
-                    I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and
-                        Conditions</a>
+                    Saya setuju dengan <a href="javascript:;" class="text-dark font-weight-bolder"><b><u>Syarat dan Kondisi</u></b></a>
                 </label>
                 @error('terms') <p style="color: red"class='text-danger text-xs'> {{ $message }} </p> @enderror
             </div>
@@ -194,7 +190,7 @@
             </div>
 
             <div class="grid">
-                <a class="mt-5 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md transition-all text-sm" href="{{ url('/login') }}" aria-current="page">Already Have an Account? <span class="text-blue-600 hover:text-gray-400" >Log In</span></a>
+                <a class="mt-5 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md transition-all text-sm" href="{{ url('/login') }}" aria-current="page">Sudah punya akun? <span class="text-blue-600 hover:text-gray-400" >Log In</span></a>
             </div>
 
         </form>

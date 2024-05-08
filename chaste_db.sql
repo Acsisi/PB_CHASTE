@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 03:52 PM
+-- Generation Time: May 06, 2024 at 04:27 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -137,6 +137,8 @@ CREATE TABLE `kamar` (
   `penyewa_id` int(11) DEFAULT NULL COMMENT 'boleh NULL',
   `nama` varchar(255) NOT NULL,
   `foto` varchar(255) NOT NULL,
+  `foto2` varchar(255) DEFAULT NULL,
+  `foto3` varchar(255) DEFAULT NULL,
   `harga` int(11) NOT NULL,
   `deskripsi` varchar(255) DEFAULT NULL COMMENT 'boleh NULL',
   `AC` enum('AC','Non-AC') NOT NULL,
@@ -149,15 +151,15 @@ CREATE TABLE `kamar` (
 -- Dumping data for table `kamar`
 --
 
-INSERT INTO `kamar` (`kamar_id`, `user_id`, `penyewa_id`, `nama`, `foto`, `harga`, `deskripsi`, `AC`, `created_at`, `updated_at`, `status`) VALUES
-(1, 1, 12, 'A-11', 'kamar/kos1.png', 1200000, 'First floor room with AC. Close to the entrance door.', 'AC', '2024-01-09 17:52:00', '2023-12-08 09:14:45', 2),
-(2, 1, NULL, 'A-12', 'kamar/kos1.png', 1200000, 'First floor room with AC. Close to the bathroom.', 'AC', '2023-12-08 09:20:22', '2023-12-08 09:14:45', 1),
-(3, 1, NULL, 'A-13', 'kamar/kos1.png', 1200000, 'First floor room with AC. Close to the stairs to 2nd floor.', 'AC', '2023-12-08 09:21:53', '2023-12-08 09:14:45', 1),
-(4, 1, NULL, 'A-14', 'kamar/kos1.png', 1200000, 'First floor room with AC. Close to the water dispenser.', 'AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
-(5, 1, 26, 'B-21', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the stairs to 1st floor.', 'Non-AC', '2024-04-23 13:51:15', '2023-12-08 09:14:45', 2),
-(6, 1, NULL, 'B-22', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the bathroom.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
-(7, 1, NULL, 'B-23', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the water dispenser.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
-(8, 1, NULL, 'B-24', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the corner.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1);
+INSERT INTO `kamar` (`kamar_id`, `user_id`, `penyewa_id`, `nama`, `foto`, `foto2`, `foto3`, `harga`, `deskripsi`, `AC`, `created_at`, `updated_at`, `status`) VALUES
+(1, 1, 12, 'A-11', 'kamar/kos1.png', NULL, NULL, 1200000, 'First floor room with AC. Close to the entrance door.', 'AC', '2024-01-09 17:52:00', '2023-12-08 09:14:45', 2),
+(2, 1, NULL, 'A-12', 'kamar/kos1.png', NULL, NULL, 1200000, 'First floor room with AC. Close to the bathroom.', 'AC', '2023-12-08 09:20:22', '2023-12-08 09:14:45', 1),
+(3, 1, NULL, 'A-13', 'kamar/kos1.png', NULL, NULL, 1200000, 'First floor room with AC. Close to the stairs to 2nd floor.', 'AC', '2023-12-08 09:21:53', '2023-12-08 09:14:45', 1),
+(4, 1, NULL, 'A-14', 'kamar/kos1.png', NULL, NULL, 1200000, 'First floor room with AC. Close to the water dispenser.', 'AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
+(5, 1, 26, 'B-21', 'kamar/kos2.webp', NULL, NULL, 900000, 'Second floor room without AC. Close to the stairs to 1st floor.', 'Non-AC', '2024-04-23 13:51:15', '2023-12-08 09:14:45', 2),
+(6, 1, NULL, 'B-22', 'kamar/kos2.webp', NULL, NULL, 900000, 'Second floor room without AC. Close to the bathroom.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
+(7, 1, NULL, 'B-23', 'kamar/kos2.webp', NULL, NULL, 900000, 'Second floor room without AC. Close to the water dispenser.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
+(8, 1, NULL, 'B-24', 'kamar/kos2.webp', NULL, NULL, 900000, 'Second floor room without AC. Close to the corner.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1);
 
 -- --------------------------------------------------------
 

@@ -14,16 +14,16 @@ class KosController extends Controller
     //
     public function getKamarAC(){
         $listKamar = Kamar::where('status', 1)->where('penyewa_id', NULL)->where('AC', 'AC')->get();
-        $title = "With AC";
-        $deskripsi = "The room options include AC, providing a cool and more comfortable temperature.";
+        $title = "dengan AC";
+        $deskripsi = "Opsi kamar sudah termasuk AC sehingga memberikan suhu yang sejuk dan nyaman.";
 
         return view('kos', ['listKamar' => $listKamar, 'title'=>$title, 'deskripsi'=>$deskripsi]);
     }
 
     public function getKamarNonAC(){
         $listKamar = Kamar::where('status', 1)->where('penyewa_id', NULL)->where('AC', 'Non-AC')->get();
-        $title = "Without AC";
-        $deskripsi = "The room options do not include AC, providing a cheaper price for your wallet.";
+        $title = "Tanpa AC";
+        $deskripsi = "Opsi kamar tidak termasuk AC sehingga memberikan harga yang lebih murah.";
 
         return view('kos', ['listKamar' => $listKamar, 'title'=>$title, 'deskripsi'=>$deskripsi]);
     }

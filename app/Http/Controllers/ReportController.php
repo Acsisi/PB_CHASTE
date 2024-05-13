@@ -33,18 +33,24 @@ class ReportController extends Controller
         if($request->exampleRadio == 1){
             DB::table('h_kamar')->insert([
                 'user_id' => 1,
-                'penyewa_id' => $request->penyewa,
-                'total' => $request->total,
-                'status' => 1
+                'penyewa_id' => intval($request->penyewa),
+                'total' => intval($request->total)
                 //status 1 sudah dibayar
             ]);
         }else{
-            DB::table('h_tenant')->insert([
-                'user_id' => 1,
+            DB::table('h_galon')->insert([
                 'penyewa_id' => $request->penyewa2,
-                'total' => $request->total,
+                // 'pcs' => $request->pcs,
+                'pcs' => 1,
+                'harga' => 20000,
                 'status' => 1
                 //status 1 sudah dibayar
+            ]);
+
+            DB::table('user')
+            ->where('user_id', '=', $request->penyewa2)
+            ->update([
+                'status_galon' => 2,
             ]);
         }
 

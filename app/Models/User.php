@@ -28,6 +28,7 @@ class User extends Authenticatable
         'no_telp',
         'email',
         'status',
+        'status_galon'
     ];
 
     protected $table = "user";

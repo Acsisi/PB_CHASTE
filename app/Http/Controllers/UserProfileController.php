@@ -47,7 +47,19 @@ class UserProfileController extends Controller
         $user = User::where('user_id', $request->id)->first();
     
         if ($user) {
-            $user->delete();
+            $user->update(['status' => 0]);
+        }
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+        return redirect('/user-management');
+    }
+
+    public function updateUser(Request $request){
+        // dd("hai");
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        $user = User::where('user_id', $request->id)->first();
+    
+        if ($user) {
+            $user->update(['status_galon' => 1]);
         }
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
         return redirect('/user-management');

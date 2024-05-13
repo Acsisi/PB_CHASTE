@@ -10,10 +10,13 @@ use App\Models\D_Kamar;
 use App\Models\Menu;
 use App\Models\H_Menu;
 use App\Models\D_Menu;
+use App\Models\H_Galon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Midtrans\Config;
+use Midtrans\Snap;
 
 class PageController extends Controller
 {
@@ -100,29 +103,58 @@ class PageController extends Controller
         $month = $currentDate->month;
         $year = $currentDate->year;
 
-        $listKamar = Kamar::where('penyewa_id', Session::get('login_id'))->where('status', 2)->get();
-        $arrayKamar = $listKamar->pluck('kamar_id')->toArray();
+        $listKamar = Kamar::where('penyewa_id', Session::get('login_id'))->where('status', 2)->first();
+        if ($listKamar) {
+            $arrayKamar = $listKamar->pluck('kamar_id')->toArray();
 
-        $listDKamar = D_Kamar::whereIn('kamar_id', $arrayKamar)->get();
-        $arrayDKamar = $listDKamar->pluck('h_kamar_id')->toArray();
+            $listDKamar = D_Kamar::whereIn('kamar_id', $arrayKamar)->get();
+            $arrayDKamar = $listDKamar->pluck('h_kamar_id')->toArray();
 
-        $listHKamar = H_Kamar::whereIn('h_kamar_id', $arrayDKamar)
-        ->where('status', 1)
-        ->whereMonth('created_at', $month)
-        ->whereYear('created_at', $year)
-        ->get();
-        $arrayHKamar = $listHKamar->pluck('h_kamar_id')->toArray();
+            $listHKamar = H_Kamar::whereIn('h_kamar_id', $arrayDKamar)
+            ->where('status', 1)
+            ->whereMonth('created_at', $month)
+            ->whereYear('created_at', $year)
+            ->get();
+            $arrayHKamar = $listHKamar->pluck('h_kamar_id')->toArray();
 
-        $listPembayaran = D_Kamar::whereIn('h_kamar_id', $arrayHKamar)->get();
-        
-        if($listPembayaran->isNotEmpty()){
-            $cekPembayaran = 1;
+            $listPembayaran = D_Kamar::whereIn('h_kamar_id', $arrayHKamar)->get();
+
+            if($listPembayaran->isNotEmpty()){
+                $cekPembayaran = 1;
+            }
+            else{
+                $cekPembayaran = null;
+            }
+    
+            $cekGalon = User::where('user_id', Session::get('login_id'))->first();
+    
+            //MIDTRANS SEWA
+            Config::$serverKey = config('services.midtrans.server_key');
+            Config::$clientKey = config('services.midtrans.client_key');
+            Config::$isProduction = config('services.midtrans.is_production');
+            Config::$isSanitized = config('services.midtrans.is_sanitized');
+            Config::$is3ds = config('services.midtrans.is_3ds');
+            Session::put('kamar_id', $listKamar->kamar_id);
+            Session::put('kamar_harga', $listKamar->harga);
+            $transactionDetails = [
+                'order_id' => 'ORDER-' . time(),
+                'gross_amount' => $listKamar->harga
+            ];
+            $snapToken = Snap::getSnapToken(['transaction_details' => $transactionDetails]);
+    
+            //MIDTRANS GALON
+            $transactionDetailsGalon = [
+                'order_id' => 'ORDER-' . time(),
+                'gross_amount' => 20000
+            ];
+            $snapTokenGalon = Snap::getSnapToken(['transaction_details' => $transactionDetailsGalon]);
+
+            return view("userDashboard", ['snapToken' => $snapToken, 'snapTokenGalon'=>$snapTokenGalon, 'cekGalon'=>$cekGalon, 'listPembayaran'=>$listPembayaran, 'cekPembayaran' => $cekPembayaran, 'listKamar' => $listKamar]);
         }
         else{
-            $cekPembayaran = null;
+            $cekPembayaran = 1;
+            return view("userDashboard", ['cekPembayaran' => $cekPembayaran, 'listKamar' => $listKamar]);
         }
-
-        return view("userDashboard", ['listPembayaran'=>$listPembayaran, 'cekPembayaran' => $cekPembayaran, 'listKamar' => $listKamar]);
     }
 
     public function user_history(Request $request)
@@ -138,15 +170,27 @@ class PageController extends Controller
 
             $listHKamar = H_Kamar::where('penyewa_id', Session::get('login_id'))
                 ->whereIn('h_kamar_id', $arrayDKamar)
-                ->orWhereRaw("DATE_FORMAT(created_at, '%e %b %Y') LIKE ?", ['%' . $search . '%'])
-                ->orderBy('updated_at', 'desc')
-                ->paginate(10);
+                //->orWhereRaw("DATE_FORMAT(created_at, '%e %b %Y') LIKE ?", ['%' . $search . '%'])
+                ->orderBy('updated_at', 'desc');
+
+            if(str_contains("GALON", strtoupper($search))){
+                $listHGalon = H_Galon::where('penyewa_id', Session::get('login_id'))
+                //->WhereRaw("DATE_FORMAT(created_at, '%e %b %Y') LIKE ?", ['%' . $search . '%'])
+                ->orderBy('updated_at', 'desc');
+
+                $listCombined = $listHKamar->union($listHGalon)->orderBy('updated_at', 'desc')->paginate(10);
+            }
+            else{
+                $listCombined = $listHKamar->orderBy('updated_at', 'desc')->paginate(10);
+            }
         }
         else{
-            $listHKamar = H_Kamar::where('penyewa_id', Session::get('login_id'))->orderBy('updated_at', 'desc')->paginate(10);
+            $listHKamar = H_Kamar::where('penyewa_id', Session::get('login_id'))->orderBy('updated_at', 'desc');
+            $listHGalon = H_Galon::where('penyewa_id', Session::get('login_id'))->orderBy('updated_at', 'desc');
+            $listCombined = $listHKamar->union($listHGalon)->orderBy('updated_at', 'desc')->paginate(10);
         }
 
-        return view("userHistory", ['listHKamar' => $listHKamar, 'search' => $search]);
+        return view("userHistory", ['listHKamar' => $listCombined, 'search' => $search]);
     }
 
     public function user_history_detail(Request $request)
@@ -156,6 +200,13 @@ class PageController extends Controller
         $Kamar = Kamar::where('kamar_id', $DKamar->kamar_id)->first();
 
         return view("userHistoryDetail", ['HKamar' => $HKamar, 'DKamar' => $DKamar, 'Kamar'=>$Kamar]);
+    }
+
+    public function user_history_detail_galon(Request $request)
+    {
+        $HGalon = H_Galon::latest()->first();
+
+        return view("userHistoryDetail", ['HGalon' => $HGalon, 'Kamar'=>'no']);
     }
 
     public function user_history_food(Request $request)

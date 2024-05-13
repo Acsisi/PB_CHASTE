@@ -45,25 +45,60 @@
             <h3 class="text-lg font-semibold text-gray-800 ">
               Invoice dari Chaste
             </h3>
-            <p class="text-sm text-gray-500">
-              Invoice Kamar #{{$HKamar->h_kamar_id}}
-            </p>
-            <p class="text-sm text-gray-500">
-              Kamar {{$Kamar->nama}} ({{$Kamar->AC}})
-            </p>
+            @php
+              if($Kamar == 'no'){
+                echo
+                '<p class="text-sm text-gray-500">
+                  Invoice Galon #'.$HGalon->h_galon_id.'
+                </p>
+                ';
+              }
+              else{
+                echo
+                '<p class="text-sm text-gray-500">
+                  Invoice Kamar #'.$HKamar->h_kamar_id.'
+                </p>
+                <p class="text-sm text-gray-500">
+                  Kamar '.$Kamar->nama.' ('.$Kamar->AC.')
+                </p>
+                ';
+              }
+            @endphp
           </div>
 
           <!-- Grid -->
           <div class="mt-5 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 gap-5">
             <div>
               <span class="block text-xs uppercase text-gray-500">Jumlah pembayaran:</span>
-              <span class="block text-sm font-medium text-gray-800 ">Rp {{number_format($HKamar->total , 0, ',', '.')}}</span>
+              @php
+                if($Kamar == 'no'){
+                  echo
+                  '<span class="block text-sm font-medium text-gray-800 ">Rp '.number_format($HGalon->harga , 0, ',', '.').'</span>
+                  ';
+                }
+                else{
+                  echo
+                  '<span class="block text-sm font-medium text-gray-800 ">Rp '.number_format($HKamar->total , 0, ',', '.').'</span>
+                  ';
+                }
+              @endphp
             </div>
             <!-- End Col -->
 
             <div>
               <span class="block text-xs uppercase text-gray-500">Tanggal pembayaran:</span>
-              <span class="block text-sm font-medium text-gray-800 ">{{$HKamar->created_at->format('j M Y')}}, {{$HKamar->created_at->format('H:i:s')}}</span>
+              @php
+                if($Kamar == 'no'){
+                  echo
+                  '<span class="block text-sm font-medium text-gray-800 ">'.$HGalon->created_at->format('j M Y').', '.$HGalon->created_at->format('H:i:s').'</span>
+                  ';
+                }
+                else{
+                  echo
+                  '<span class="block text-sm font-medium text-gray-800 ">'.$HKamar->created_at->format('j M Y').', '.$HKamar->created_at->format('H:i:s').'</span>
+                  ';
+                }
+              @endphp
             </div>
             <!-- End Col -->
 
@@ -78,8 +113,20 @@
             <ul class="mt-3 flex flex-col">
               <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg ">
                 <div class="flex items-center justify-between w-full">
-                  <span>Pembayaran Sewa</span>
-                  <span>Rp {{number_format($DKamar->harga, 0, ',', '.')}}</span>
+                  @php
+                    if($Kamar == 'no'){
+                      echo
+                      '<span>Pembayaran Galon</span>
+                        <span>Rp '.number_format($HGalon->harga, 0, ',', '.').'</span>
+                      ';
+                    }
+                    else{
+                      echo
+                      '<span>Pembayaran Sewa</span>
+                        <span>Rp '.number_format($DKamar->harga, 0, ',', '.').'</span>
+                      ';
+                    }
+                  @endphp
                 </div>
               </li>
               {{-- <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg ">
@@ -91,7 +138,18 @@
               <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-semibold bg-gray-50 border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg ">
                 <div class="flex items-center justify-between w-full">
                   <span>Jumlah yang dibayarkan</span>
-                  <span>Rp {{number_format($HKamar->total , 0, ',', '.')}}</span>
+                  @php
+                    if($Kamar == 'no'){
+                      echo
+                      '<span>Rp '.number_format($HGalon->harga , 0, ',', '.').'</span>
+                      ';
+                    }
+                    else{
+                      echo
+                      '<span>Rp '.number_format($HKamar->total , 0, ',', '.').'</span>
+                      ';
+                    }
+                  @endphp
                 </div>
               </li>
             </ul>

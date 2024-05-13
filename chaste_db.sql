@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 06, 2024 at 04:27 AM
+-- Generation Time: May 13, 2024 at 12:08 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -43,9 +43,10 @@ CREATE TABLE `d_bulan` (
 --
 
 INSERT INTO `d_bulan` (`d_bulan_id`, `h_bulan_id`, `keterangan`, `harga`, `status`) VALUES
-(1, 8, 'buat stand minuman chaste', 10000, 0),
-(2, 9, 'buat stand minuman chaste', 10000, 0),
-(3, 10, 'Bayar kurir', 20000, 0);
+(1, 8, 'gaji', 3000000, 0),
+(2, 9, 'listrik', 2000000, 0),
+(3, 10, 'PDAM', 800000, 0),
+(4, 11, 'restock galon', 200000, 0);
 
 -- --------------------------------------------------------
 
@@ -70,8 +71,7 @@ CREATE TABLE `d_kamar` (
 --
 
 INSERT INTO `d_kamar` (`d_kamar_id`, `h_kamar_id`, `kamar_id`, `harga`, `tgl_mulai`, `foto_ktp`, `foto_kk`, `status`) VALUES
-(1, 1, 1, 1200000, NULL, NULL, NULL, 1),
-(25, 35, 5, 900000, '2024-04-24', 'penyewa/ktp/nqqzynxy4n871.jpg', 'penyewa/kk/5712_9309_8882_SVP002-L.jpg', 1);
+(1, 1, 1, 1200000, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -95,9 +95,34 @@ CREATE TABLE `h_bulan` (
 --
 
 INSERT INTO `h_bulan` (`h_bulan_id`, `user_id`, `total`, `created_at`, `updated_at`, `status`, `keterangan`) VALUES
-(8, 1, 10000, '2024-01-10 10:21:58', '2024-01-10 10:21:58', 0, 'buat stand minuman chaste'),
-(9, 1, 10000, '2024-01-10 10:22:02', '2024-01-10 10:22:02', 4, 'buat stand minuman chaste'),
-(10, 1, 10000, '2024-01-10 11:29:54', '2024-01-10 11:29:54', 0, 'Bayar kurir');
+(8, 1, 3000000, '2024-01-10 10:21:58', '2024-01-10 10:21:58', 0, 'gaji'),
+(9, 1, 2000000, '2024-01-10 10:22:02', '2024-01-10 10:22:02', 4, 'listrik'),
+(10, 1, 800000, '2024-01-10 11:29:54', '2024-01-10 11:29:54', 0, 'PDAM'),
+(11, 1, 200000, '2024-04-23 15:05:44', '2024-04-23 15:05:44', 0, 'restock galon');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `h_galon`
+--
+
+DROP TABLE IF EXISTS `h_galon`;
+CREATE TABLE `h_galon` (
+  `h_galon_id` int(11) NOT NULL,
+  `penyewa_id` int(11) NOT NULL,
+  `pcs` int(11) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `h_galon`
+--
+
+INSERT INTO `h_galon` (`h_galon_id`, `penyewa_id`, `pcs`, `harga`, `created_at`, `updated_at`, `status`) VALUES
+(3, 12, 1, 20000, '2024-05-12 23:11:07', '2024-05-12 23:11:07', 1);
 
 -- --------------------------------------------------------
 
@@ -121,8 +146,7 @@ CREATE TABLE `h_kamar` (
 --
 
 INSERT INTO `h_kamar` (`h_kamar_id`, `user_id`, `penyewa_id`, `total`, `created_at`, `updated_at`, `status`) VALUES
-(1, 1, 12, 1200000, '2024-01-05 08:50:19', '2024-01-05 08:50:19', 1),
-(35, 1, 26, 900000, '2024-04-23 06:51:15', '2024-04-23 06:51:15', 1);
+(1, 1, 12, 1200000, '2024-01-05 08:50:19', '2024-01-05 08:50:19', 1);
 
 -- --------------------------------------------------------
 
@@ -152,14 +176,15 @@ CREATE TABLE `kamar` (
 --
 
 INSERT INTO `kamar` (`kamar_id`, `user_id`, `penyewa_id`, `nama`, `foto`, `foto2`, `foto3`, `harga`, `deskripsi`, `AC`, `created_at`, `updated_at`, `status`) VALUES
-(1, 1, 12, 'A-11', 'kamar/kos1.png', NULL, NULL, 1200000, 'First floor room with AC. Close to the entrance door.', 'AC', '2024-01-09 17:52:00', '2023-12-08 09:14:45', 2),
-(2, 1, NULL, 'A-12', 'kamar/kos1.png', NULL, NULL, 1200000, 'First floor room with AC. Close to the bathroom.', 'AC', '2023-12-08 09:20:22', '2023-12-08 09:14:45', 1),
-(3, 1, NULL, 'A-13', 'kamar/kos1.png', NULL, NULL, 1200000, 'First floor room with AC. Close to the stairs to 2nd floor.', 'AC', '2023-12-08 09:21:53', '2023-12-08 09:14:45', 1),
-(4, 1, NULL, 'A-14', 'kamar/kos1.png', NULL, NULL, 1200000, 'First floor room with AC. Close to the water dispenser.', 'AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
-(5, 1, 26, 'B-21', 'kamar/kos2.webp', NULL, NULL, 900000, 'Second floor room without AC. Close to the stairs to 1st floor.', 'Non-AC', '2024-04-23 13:51:15', '2023-12-08 09:14:45', 2),
-(6, 1, NULL, 'B-22', 'kamar/kos2.webp', NULL, NULL, 900000, 'Second floor room without AC. Close to the bathroom.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
-(7, 1, NULL, 'B-23', 'kamar/kos2.webp', NULL, NULL, 900000, 'Second floor room without AC. Close to the water dispenser.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
-(8, 1, NULL, 'B-24', 'kamar/kos2.webp', NULL, NULL, 900000, 'Second floor room without AC. Close to the corner.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1);
+(1, 1, 12, 'A-11', 'kamar/kamar3.jpg', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan pintu masuk.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 2),
+(2, 1, NULL, 'A-12', 'kamar/kos1.png', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan kamar mandi.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 1),
+(3, 1, NULL, 'A-13', 'kamar/kos1.png', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan tangga naik menuju lantai 2.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 1),
+(4, 1, NULL, 'A-14', 'kamar/kos1.png', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan dispenser air.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 1),
+(5, 1, NULL, 'B-21', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan tangga turun menuju lantai 1.', 'Non-AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 2),
+(6, 1, NULL, 'B-22', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan kamar mandi.', 'Non-AC', '2024-05-13 10:05:17', '2023-12-08 09:14:45', 1),
+(7, 1, NULL, 'B-23', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan dispenser air.', 'Non-AC', '2024-05-13 10:05:17', '2023-12-08 09:14:45', 1),
+(8, 1, NULL, 'B-24', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan sudut.', 'Non-AC', '2024-05-13 10:05:17', '2023-12-08 09:14:45', 1),
+(9, 1, NULL, 'B-6', 'kamar/kamar3.jpg', NULL, NULL, 800000, 'Kamar lantai dua tanpa AC. Mejanya kurang bagus.', 'Non-AC', '2024-05-13 10:05:17', '2024-04-23 14:59:11', 1);
 
 -- --------------------------------------------------------
 
@@ -183,9 +208,9 @@ CREATE TABLE `testimony` (
 --
 
 INSERT INTO `testimony` (`testimony_id`, `customer_id`, `nama`, `isi`, `created_at`, `updated_at`, `status`) VALUES
-(1, 12, 'Fransisca', 'We found amazing service with a superior staff! We recommend this place!', '2023-12-08 08:40:58', '2023-12-08 08:40:58', 1),
-(2, 13, 'Arensa', 'From the moment I arrived, I felt like I was being treated like royalty. The front desk staff was incredibly friendly and helpful, and they went out of their way to make sure I had a smooth check-in process.', '2023-12-08 08:44:59', '2023-12-08 08:44:59', 1),
-(5, 26, 'Stenlie', 'I met the owner who was very nice and helpful.', '2023-12-08 08:46:14', '2023-12-08 08:46:14', 1);
+(1, 12, 'Fransisca', 'Kami menemukan layanan luar biasa dengan staf yang unggul! Kami merekomendasikan tempat ini!', '2023-12-08 08:40:58', '2023-12-08 08:40:58', 1),
+(2, 13, 'Arensa', 'Staf sangat ramah dan membantu banyak.', '2023-12-08 08:44:59', '2023-12-08 08:44:59', 1),
+(5, 26, 'Stenlie', 'Saya bertemu dengan pemiliknya, dia sangat baik dan membantu.', '2023-12-08 08:46:14', '2023-12-08 08:46:14', 1);
 
 -- --------------------------------------------------------
 
@@ -206,18 +231,19 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` tinyint(1) NOT NULL DEFAULT 1
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `status_galon` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1= sudah balikin, 2= ga boleh beli lagi sebelum admin ubah ke 1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `nama`, `ktp`, `foto`, `role`, `no_telp`, `email`, `created_at`, `updated_at`, `status`) VALUES
-(1, 'admin', '$2y$12$hwySAInr8Hg/j.jEx8.PPehRfEa8tyeDEKkYa7946dGLoWpa47d/y', NULL, NULL, NULL, '1', NULL, 'admin@gmail.com', '2023-11-19 05:50:07', '2023-11-19 05:50:07', 1),
-(12, 'penyewa1', '$2y$12$qHUhpB1g85ivRBlApk1QZu9X.Pqq1/t6WLoKwFZgq82MSspHDgEuW', 'Fransisca', NULL, NULL, '3', NULL, 'penyewa1@gmail.com', '2023-12-08 08:35:12', '2023-12-08 08:35:12', 1),
-(13, 'penyewa2', '$2y$12$TdkcU0z2tdtXXeU6kmKLw.9UvjS062Kzi4Kj67uhwH7MNKeWWlYZK', 'Arensa', NULL, NULL, '3', NULL, 'penyewa2@gmail.com', '2023-12-08 08:35:42', '2023-12-08 08:35:42', 1),
-(26, 'penyewa3', '$2y$12$0jtvIc0SWvA5i2sut6PGke1AUMXcxU0Q5hl6BgREHFNS0lONXpoA2', 'Stenlie', '1234567890123456', NULL, '3', '12345678', 'penyewa3@gmail.com', '2024-04-01 01:13:27', '2024-04-01 01:13:27', 1);
+INSERT INTO `user` (`user_id`, `username`, `password`, `nama`, `ktp`, `foto`, `role`, `no_telp`, `email`, `created_at`, `updated_at`, `status`, `status_galon`) VALUES
+(1, 'admin', '$2y$12$hwySAInr8Hg/j.jEx8.PPehRfEa8tyeDEKkYa7946dGLoWpa47d/y', NULL, NULL, NULL, '1', NULL, 'admin@gmail.com', '2023-11-19 05:50:07', '2023-11-19 05:50:07', 1, 1),
+(12, 'penyewa1', '$2y$12$qHUhpB1g85ivRBlApk1QZu9X.Pqq1/t6WLoKwFZgq82MSspHDgEuW', 'Fransisca', NULL, NULL, '3', NULL, 'penyewa1@gmail.com', '2023-12-08 08:35:12', '2023-12-08 08:35:12', 1, 2),
+(13, 'penyewa2', '$2y$12$TdkcU0z2tdtXXeU6kmKLw.9UvjS062Kzi4Kj67uhwH7MNKeWWlYZK', 'Arensa', NULL, NULL, '3', NULL, 'penyewa2@gmail.com', '2023-12-08 08:35:42', '2023-12-08 08:35:42', 1, 1),
+(26, 'penyewa3', '$2y$12$0jtvIc0SWvA5i2sut6PGke1AUMXcxU0Q5hl6BgREHFNS0lONXpoA2', 'Stenlie', '1234567890123456', NULL, '3', '12345678', 'penyewa3@gmail.com', '2024-04-01 01:13:27', '2024-04-01 01:13:27', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -244,6 +270,13 @@ ALTER TABLE `d_kamar`
 ALTER TABLE `h_bulan`
   ADD PRIMARY KEY (`h_bulan_id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `h_galon`
+--
+ALTER TABLE `h_galon`
+  ADD PRIMARY KEY (`h_galon_id`),
+  ADD KEY `penyewa_id` (`penyewa_id`);
 
 --
 -- Indexes for table `h_kamar`
@@ -282,7 +315,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `d_bulan`
 --
 ALTER TABLE `d_bulan`
-  MODIFY `d_bulan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `d_bulan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `d_kamar`
@@ -294,19 +327,25 @@ ALTER TABLE `d_kamar`
 -- AUTO_INCREMENT for table `h_bulan`
 --
 ALTER TABLE `h_bulan`
-  MODIFY `h_bulan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `h_bulan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `h_galon`
+--
+ALTER TABLE `h_galon`
+  MODIFY `h_galon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `h_kamar`
 --
 ALTER TABLE `h_kamar`
-  MODIFY `h_kamar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `h_kamar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `kamar`
 --
 ALTER TABLE `kamar`
-  MODIFY `kamar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `kamar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `testimony`
@@ -342,6 +381,12 @@ ALTER TABLE `d_kamar`
 --
 ALTER TABLE `h_bulan`
   ADD CONSTRAINT `h_bulan_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `h_galon`
+--
+ALTER TABLE `h_galon`
+  ADD CONSTRAINT `h_galon_ibfk_1` FOREIGN KEY (`penyewa_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `h_kamar`

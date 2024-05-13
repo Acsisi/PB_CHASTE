@@ -1,6 +1,11 @@
 @extends('main')
 @section('content')
 
+<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('services.midtrans.client_key') }}"></script>
+@vite('resources/css/app.css')
+@vite('resources/js/app.js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 {{-- If Payment Failed --}}
 @if(session('payment_failed'))
     <script>
@@ -54,11 +59,20 @@
         <h2 class="text-4xl font-semibold text-gray-800">Halo, {{Session::get('login_username')}}</h2>
         </div>
         <div>
-            <button class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-500 text-white hover:bg-red-600 disabled:opacity-50 disabled:pointer-events-none">
-              Bayar Sewa Bulanan
-              <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </button>
-        </div>
+          <form id="BayarSewaForm" action="{{ route("payment-sewa-success") }}" method="post" enctype="multipart/form-data">
+            @csrf
+            @php
+                if($showNotif && !$cekPembayaran && $listKamar){
+                  echo
+                  '<button type="submit" class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-500 text-white hover:bg-red-600 disabled:opacity-50 disabled:pointer-events-none">
+                      Bayar Sewa Bulanan
+                      <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                  ';
+                }
+            @endphp
+        </form>
+      </div>
     </div>
 
     <div class="max-w-2xl mb-10 lg:mb-14 mt-10">
@@ -101,31 +115,145 @@
   </div>
 
   {{-- new code design --}}
-
+  @if($listKamar != null)
   <blockquote class="">
     <p class="text-2xl font-semibold  text-gray-800 md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal ">
-      Kamarku
-
+      Kamar {{$listKamar->nama}}
     </p>
   </blockquote>
-
-  <div class="grid grid-cols-2 w-full mt-5">
-    @foreach ($listKamar as $kamar)
-    <div>
-        <img class=" object-cover rounded-3xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description">
+    <div class="grid grid-cols-2 w-full mt-5">
+        <div>
+            <img class="object-cover rounded-3xl" src="{{ Storage::url($listKamar->foto) }}" alt="Image Description">
+        </div>
+        <div class="mx-auto">
+            <p class="text-xl font-semibold">19L AQUA GALON</p>
+            <img class="mt-10 object-cover rounded-3xl" src="{{ Storage::url('kamar/galon.jpg') }}" alt="Image Description">
+            <p class="text-lg mt-5">Rp. 20.000/galon</p>
+            <form id="BayarGalonForm" action="{{ route('payment-galon-success') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                @if($cekGalon->status_galon == 1)
+                    <button type="submit" name="id" value="{{ $listKamar->kamar_id }}" class="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-spacing-3 bg-blue-400 text-white hover:bg-blue-700 hover:text-white">
+                        Beli Galon
+                        <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                @else
+                    <button type="submit" name="id" value="{{ $listKamar->kamar_id }}" class="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-spacing-3 bg-slate-700 disabled:pointer-events-none text-white" disabled>
+                        Galon Belum Dikembalikan
+                    </button>
+                @endif
+            </form>
+        </div>
     </div>
-    <div class="mx-auto">
-        <p class="text-xl font-semibold">19L AQUA GALON</p>
-        <img class="mt-10 object-cover rounded-3xl" src="{{ Storage::url("/kamar/galon.jpg") }}" alt="Image Description">
-        <p class="text-lg mt-5">Rp. 20.000/galon</p>
-        <button type="submit" name="id" value="{{$kamar->kamar_id}}" class="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-spacing-3 bg-blue-400 text-white hover:bg-blue-700 hover:text-white">
-            Beli Galon
-            <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
-    </div>
-    @endforeach
 
-</div>
+    <script>
+      document.getElementById('BayarSewaForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent the default form submission
+    
+          // Serialize form data
+          var formData = new FormData(this);
+    
+          // Perform the Snap.js payment process
+          snap.pay('{{ $snapToken }}', {
+              onSuccess: function (result) {
+                  // Send form data via AJAX after successful payment
+                  fetch('{{ route('payment-sewa-success') }}', {
+                      method: 'POST',
+                      body: formData
+                  })
+                  .then(response => {
+                      if (response.ok) {
+                          // Handle successful payment response
+                          alert("Pembayaran berhasil!"); 
+                          console.log(result);
+                          window.location.href = '/payment/success';
+                      } else {
+                          // Handle payment error
+                          alert("Pembayaran gagal!");
+                          console.log(result);
+                          window.location.href = '/payment/failed';
+                      }
+                  })
+                  .catch(error => {
+                      // Handle fetch error
+                      alert("Error memproses pembayaran.");
+                      console.error('Error:', error);
+                  });
+              },
+              onPending: function (result) {
+                  // Handle pending payment
+                  alert("Menunggu konfirmasi pembayaran.");
+                  console.log(result);
+              },
+              onError: function (result) {
+                  // Handle payment error
+                  alert("Pembayaran gagal!");
+                  console.log(result);
+                  window.location.href = '/payment/failed';
+              },
+              onClose: function () {
+                  // Handle closure of payment popup
+                  alert('Proses pembayaran ditutup tanpa menyelesaikan transaksi');
+              }
+          });
+      });
+    </script>
+    
+    <script>
+      document.getElementById('BayarGalonForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent the default form submission
+    
+          // Serialize form data
+          var formDataGalon = new FormData(this);
+    
+          // Perform the Snap.js payment process
+          snap.pay('{{ $snapTokenGalon }}', {
+              onSuccess: function (result) {
+                  // Send form data via AJAX after successful payment
+                  fetch('{{ route('payment-galon-success') }}', {
+                      method: 'POST',
+                      body: formDataGalon
+                  })
+                  .then(response => {
+                      if (response.ok) {
+                          // Handle successful payment response
+                          alert("Pembayaran berhasil!"); 
+                          console.log(result);
+                          window.location.href = '/paymentgalon/success';
+                      } else {
+                          // Handle payment error
+                          alert("Pembayaran gagal!");
+                          console.log(result);
+                          window.location.href = '/payment/failed';
+                      }
+                  })
+                  .catch(error => {
+                      // Handle fetch error
+                      alert("Error memproses pembayaran.");
+                      console.error('Error:', error);
+                  });
+              },
+              onPending: function (result) {
+                  // Handle pending payment
+                  alert("Menunggu konfirmasi pembayaran.");
+                  console.log(result);
+              },
+              onError: function (result) {
+                  // Handle payment error
+                  alert("Pembayaran gagal!");
+                  console.log(result);
+                  window.location.href = '/payment/failed';
+              },
+              onClose: function () {
+                  // Handle closure of payment popup
+                  alert('Proses pembayaran ditutup tanpa menyelesaikan transaksi');
+              }
+          });
+      });
+    </script>
+@endif
+  
+
+
 
 
 @endsection

@@ -228,7 +228,18 @@
 
       <!-- End Content -->
       {{-- button  --}}
-      @if ($kamar->penyewa_id == NULL)
+      @php
+        use App\Models\Kamar;
+        $cekKamar = null;
+        if(Session::get('login_id')) $cekKamar = Kamar::where('penyewa_id', Session::get('login_id'))->first();
+      @endphp
+      @if ($cekKamar != null)
+      <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-10" style="pointer-events: none;">
+        <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-slate-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="kos-invoice">
+          Anda Sudah Sewa Kamar
+        </a>
+      </div>
+      @elseif ($kamar->penyewa_id == NULL)
       <form action="{{ route('payment') }}" method="post">
         @csrf
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-10">
@@ -241,7 +252,7 @@
       @else
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-10" style="pointer-events: none;">
           <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-slate-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="kos-invoice">
-            Ruangan ini Sudah Diambil
+            Kamar ini Sudah Diambil
           </a>
         </div>
       @endif

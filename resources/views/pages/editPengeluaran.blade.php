@@ -1,7 +1,7 @@
 @extends('layouts.appTenant', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-@include('layouts.navbars.auth.topnav', ['title' => 'Report'])
+@include('layouts.navbars.auth.topnav', ['title' => 'Pengeluaran'])
 
     <div class="container">
         <div class="row justify-content-center">

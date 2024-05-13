@@ -80,25 +80,25 @@ Route::middleware('authen:user')->group(function () {
 
 
 Route::middleware('authen:tenant')->group(function () {
-	Route::get('/hlmnTenant', [HomeController::class, 'showtenant'])->name('showtenant');
-	Route::get('/reportTenant', [HomeController::class, 'showReportTenant'])->name('showReportTenant');
-	Route::get('/ordersTenant', [HomeController::class, 'showOrders'])->name('showOrders');
-	Route::post('/orders/filter', [HomeController::class, 'filter'])->name('orders.filter');
-	Route::post('/orders/terima/{id}', [HomeController::class, 'terimaOrder'])->name('orders.terima');
-	Route::post('/orders/tolak/{id}', [HomeController::class, 'tolakOrder'])->name('orders.tolak');
-	Route::get('/pengeluaran', [HomeController::class, 'showPengeluaran'])->name('pengeluaran.show');
-	Route::post('/pengeluaran/store', [HomeController::class, 'storePengeluaran'])->name('pengeluaran.store');
-	Route::get('/report/tenant', [HomeController::class, 'showReportTenant'])->name('showReportTenant');
-	Route::post('/edit-pengeluaran/{id}', [HomeController::class, 'editPengeluaran'])->name('pengeluaran.edit');
-	Route::post('/update-pengeluaran/{id}', [HomeController::class, 'updatePengeluaran'])->name('pengeluaran.update');
-	Route::delete('/delete-pengeluaran/{id}', [HomeController::class, 'deletePengeluaran'])->name('pengeluaran.delete');
+	// Route::get('/hlmnTenant', [HomeController::class, 'showtenant'])->name('showtenant');
+	// // Route::get('/reportTenant', [HomeController::class, 'showReportTenant'])->name('showReportTenant');
+	// Route::get('/ordersTenant', [HomeController::class, 'showOrders'])->name('showOrders');
+	// Route::post('/orders/filter', [HomeController::class, 'filter'])->name('orders.filter');
+	// Route::post('/orders/terima/{id}', [HomeController::class, 'terimaOrder'])->name('orders.terima');
+	// Route::post('/orders/tolak/{id}', [HomeController::class, 'tolakOrder'])->name('orders.tolak');
+	// Route::get('/pengeluaran', [HomeController::class, 'showPengeluaran'])->name('pengeluaran.show');
+	// Route::post('/pengeluaran/store', [HomeController::class, 'storePengeluaran'])->name('pengeluaran.store');
+	// Route::get('/report/tenant', [HomeController::class, 'showReportTenant'])->name('showReportTenant');
+	// Route::post('/edit-pengeluaran/{id}', [HomeController::class, 'editPengeluaran'])->name('pengeluaran.edit');
+	// Route::post('/update-pengeluaran/{id}', [HomeController::class, 'updatePengeluaran'])->name('pengeluaran.update');
+	// Route::delete('/delete-pengeluaran/{id}', [HomeController::class, 'deletePengeluaran'])->name('pengeluaran.delete');
 	// Route::post('/insertmenu', [MenuController::class, 'insertmenu'])->name('insertmenu');
 	// Route::get('/edit-menu/{id}', [MenuController::class, 'showEditMenu'])->name('edit.menu');
 	// Route::post('/update-status-menu/{id}', [MenuController::class, 'updateStatusMenu'])->name('updateStatus.menu');
 	// Route::post('/update-menu/{id}', [MenuController::class, 'updateMenu'])->name('update.menu');
 	// Route::post('/update-status-menu/{id}', [MenuController::class, 'updateStatusMenu'])->name('updateStatus.menu');
-	Route::get('/profileTenant', [PageController::class, 'profileTenant'])->name('profileTenant');
-	Route::post('/update', [PageController::class, 'update'])->name('profile.update');
+	// Route::get('/profileTenant', [PageController::class, 'profileTenant'])->name('profileTenant');
+	// Route::post('/update', [PageController::class, 'update'])->name('profile.update');
 });
 
 
@@ -114,7 +114,7 @@ Route::middleware('authen:admin')->group(function () {
 	Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
-	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+	Route::post('logout', [LoginController::class, 'logout']);
 	Route::post('addTenant', [TenantController::class, 'addTenant'])->name('add-tenant');
 	Route::post('editTenant', [TenantController::class, 'changeTenant'])->name('edit-tenant');
 	Route::get('/tenant/edit/{id}', [TenantController::class, 'editTenant'])->name('editTenant');
@@ -126,6 +126,7 @@ Route::middleware('authen:admin')->group(function () {
 	Route::get('/kos/delete/{id}', [KosController::class, 'deleteKos']);
 	Route::get('/user-management/edit/{id}', [UserProfileController::class, 'editRole']);
 	Route::get('/user-management/delete/{id}', [UserProfileController::class, 'deleteUser']);
+	Route::get('/user-management/update/{id}', [UserProfileController::class, 'updateUser']);
 
 	Route::post('editRole', [UserProfileController::class, 'changeRole'])->name('edit-role');
 

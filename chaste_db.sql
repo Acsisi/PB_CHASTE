@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 13, 2024 at 10:10 AM
+-- Generation Time: May 13, 2024 at 12:08 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -161,6 +161,8 @@ CREATE TABLE `kamar` (
   `penyewa_id` int(11) DEFAULT NULL COMMENT 'boleh NULL',
   `nama` varchar(255) NOT NULL,
   `foto` varchar(255) NOT NULL,
+  `foto2` varchar(255) DEFAULT NULL,
+  `foto3` varchar(255) DEFAULT NULL,
   `harga` int(11) NOT NULL,
   `deskripsi` varchar(255) DEFAULT NULL COMMENT 'boleh NULL',
   `AC` enum('AC','Non-AC') NOT NULL,
@@ -173,16 +175,16 @@ CREATE TABLE `kamar` (
 -- Dumping data for table `kamar`
 --
 
-INSERT INTO `kamar` (`kamar_id`, `user_id`, `penyewa_id`, `nama`, `foto`, `harga`, `deskripsi`, `AC`, `created_at`, `updated_at`, `status`) VALUES
-(1, 1, 12, 'A-11', 'kamar/kamar3.jpg', 900000, 'First floor room with AC. Close to the entrance door.', 'AC', '2024-04-23 15:13:42', '2023-12-08 09:14:45', 2),
-(2, 1, NULL, 'A-12', 'kamar/kos1.png', 1200000, 'First floor room with AC. Close to the bathroom.', 'AC', '2023-12-08 09:20:22', '2023-12-08 09:14:45', 1),
-(3, 1, NULL, 'A-13', 'kamar/kos1.png', 1200000, 'First floor room with AC. Close to the stairs to 2nd floor.', 'AC', '2023-12-08 09:21:53', '2023-12-08 09:14:45', 1),
-(4, 1, NULL, 'A-14', 'kamar/kos1.png', 1200000, 'First floor room with AC. Close to the water dispenser.', 'AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
-(5, 1, NULL, 'B-21', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the stairs to 1st floor.', 'Non-AC', '2024-05-13 07:53:44', '2023-12-08 09:14:45', 2),
-(6, 1, NULL, 'B-22', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the bathroom.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
-(7, 1, NULL, 'B-23', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the water dispenser.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
-(8, 1, NULL, 'B-24', 'kamar/kos2.webp', 900000, 'Second floor room without AC. Close to the corner.', 'Non-AC', '2023-12-08 09:22:37', '2023-12-08 09:14:45', 1),
-(9, 1, NULL, 'B-6', 'kamar/kamar3.jpg', 800000, 'mejanya kurang bagus', 'Non-AC', '2024-04-23 14:59:11', '2024-04-23 14:59:11', 1);
+INSERT INTO `kamar` (`kamar_id`, `user_id`, `penyewa_id`, `nama`, `foto`, `foto2`, `foto3`, `harga`, `deskripsi`, `AC`, `created_at`, `updated_at`, `status`) VALUES
+(1, 1, 12, 'A-11', 'kamar/kamar3.jpg', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan pintu masuk.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 2),
+(2, 1, NULL, 'A-12', 'kamar/kos1.png', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan kamar mandi.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 1),
+(3, 1, NULL, 'A-13', 'kamar/kos1.png', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan tangga naik menuju lantai 2.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 1),
+(4, 1, NULL, 'A-14', 'kamar/kos1.png', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan dispenser air.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 1),
+(5, 1, NULL, 'B-21', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan tangga turun menuju lantai 1.', 'Non-AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 2),
+(6, 1, NULL, 'B-22', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan kamar mandi.', 'Non-AC', '2024-05-13 10:05:17', '2023-12-08 09:14:45', 1),
+(7, 1, NULL, 'B-23', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan dispenser air.', 'Non-AC', '2024-05-13 10:05:17', '2023-12-08 09:14:45', 1),
+(8, 1, NULL, 'B-24', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan sudut.', 'Non-AC', '2024-05-13 10:05:17', '2023-12-08 09:14:45', 1),
+(9, 1, NULL, 'B-6', 'kamar/kamar3.jpg', NULL, NULL, 800000, 'Kamar lantai dua tanpa AC. Mejanya kurang bagus.', 'Non-AC', '2024-05-13 10:05:17', '2024-04-23 14:59:11', 1);
 
 -- --------------------------------------------------------
 
@@ -206,9 +208,9 @@ CREATE TABLE `testimony` (
 --
 
 INSERT INTO `testimony` (`testimony_id`, `customer_id`, `nama`, `isi`, `created_at`, `updated_at`, `status`) VALUES
-(1, 12, 'Fransisca', 'We found amazing service with a superior staff! We recommend this place!', '2023-12-08 08:40:58', '2023-12-08 08:40:58', 1),
-(2, 13, 'Arensa', 'From the moment I arrived, I felt like I was being treated like royalty. The front desk staff was incredibly friendly and helpful, and they went out of their way to make sure I had a smooth check-in process.', '2023-12-08 08:44:59', '2023-12-08 08:44:59', 1),
-(5, 26, 'Stenlie', 'I met the owner who was very nice and helpful.', '2023-12-08 08:46:14', '2023-12-08 08:46:14', 1);
+(1, 12, 'Fransisca', 'Kami menemukan layanan luar biasa dengan staf yang unggul! Kami merekomendasikan tempat ini!', '2023-12-08 08:40:58', '2023-12-08 08:40:58', 1),
+(2, 13, 'Arensa', 'Staf sangat ramah dan membantu banyak.', '2023-12-08 08:44:59', '2023-12-08 08:44:59', 1),
+(5, 26, 'Stenlie', 'Saya bertemu dengan pemiliknya, dia sangat baik dan membantu.', '2023-12-08 08:46:14', '2023-12-08 08:46:14', 1);
 
 -- --------------------------------------------------------
 

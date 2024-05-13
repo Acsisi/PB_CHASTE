@@ -10,7 +10,7 @@
   <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto my-4 sm:my-10">
     <div class="mb-5 pb-5 flex justify-between items-center border-b border-gray-200 dark:border-gray-700">
         <div>
-        <h2 class="text-4xl font-semibold text-gray-800" style="display:inline-block; padding-right:20px;">Sejarah Pembayaran</h2>
+        <h2 class="text-4xl font-semibold text-gray-800" style="display:inline-block; padding-right:20px;">Riwayat Pembayaran</h2>
         </div>
     </div>
 

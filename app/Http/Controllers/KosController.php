@@ -36,6 +36,11 @@ class KosController extends Controller
 
     public function addKos(Request $request){
         $namaFolderPhoto = ""; $namaFilePhoto = "";
+        $namaFolderPhoto2 = ""; $namaFilePhoto2 = "";
+        $namaFolderPhoto3 = ""; $namaFilePhoto3 = "";
+        $namaPhoto2 = NULL;
+        $namaPhoto3 = NULL;
+
         foreach ($request->file("photo") as $photo) {
             $namaFilePhoto  = $photo->getClientOriginalName();
             $namaFolderPhoto = "kamar/";
@@ -43,11 +48,32 @@ class KosController extends Controller
             $photo->storeAs($namaFolderPhoto,$namaFilePhoto, 'public');
         }
 
+        if ($request->file("photo2")){
+            foreach ($request->file("photo2") as $photo2) {
+                $namaFilePhoto2  = $photo2->getClientOriginalName();
+                $namaFolderPhoto2 = "kamar/";
+
+                $photo2->storeAs($namaFolderPhoto2,$namaFilePhoto2, 'public');
+            }
+            $namaPhoto2 = $namaFolderPhoto2.$namaFilePhoto2;
+        }
+        if ($request->file("photo3")){
+            foreach ($request->file("photo3") as $photo3) {
+                $namaFilePhoto3  = $photo3->getClientOriginalName();
+                $namaFolderPhoto3 = "kamar/";
+
+                $photo3->storeAs($namaFolderPhoto3,$namaFilePhoto3, 'public');
+            }
+            $namaPhoto3 = $namaFolderPhoto3.$namaFilePhoto3;
+        }
+
         DB::table('kamar')->insert([
             'user_id' => 1,
             'nama' => $request->name,
             'harga' => $request->price,
             'foto' => $namaFolderPhoto.$namaFilePhoto,
+            'foto2' => $namaPhoto2,
+            'foto3' => $namaPhoto3,
             'deskripsi' => $request->desc,
             'AC' => $request->exampleRadio,
             'status' => 1
@@ -73,7 +99,13 @@ class KosController extends Controller
                 "required" => "Fill the blank",
             ]
         );
+
         $namaFolderPhoto = ""; $namaFilePhoto = "";
+        $namaFolderPhoto2 = ""; $namaFilePhoto2 = "";
+        $namaFolderPhoto3 = ""; $namaFilePhoto3 = "";
+        $namaPhoto2 = NULL;
+        $namaPhoto3 = NULL;
+
         foreach ($request->file("photo") as $photo) {
             $namaFilePhoto  = $photo->getClientOriginalName();
             $namaFolderPhoto = "kamar/";
@@ -81,11 +113,32 @@ class KosController extends Controller
             $photo->storeAs($namaFolderPhoto,$namaFilePhoto, 'public');
         }
 
+        if ($request->file("photo2")){
+            foreach ($request->file("photo2") as $photo2) {
+                $namaFilePhoto2  = $photo2->getClientOriginalName();
+                $namaFolderPhoto2 = "kamar/";
+
+                $photo2->storeAs($namaFolderPhoto2,$namaFilePhoto2, 'public');
+            }
+            $namaPhoto2 = $namaFolderPhoto2.$namaFilePhoto2;
+        }
+        if ($request->file("photo3")){
+            foreach ($request->file("photo3") as $photo3) {
+                $namaFilePhoto3  = $photo3->getClientOriginalName();
+                $namaFolderPhoto3 = "kamar/";
+
+                $photo3->storeAs($namaFolderPhoto3,$namaFilePhoto3, 'public');
+            }
+            $namaPhoto3 = $namaFolderPhoto3.$namaFilePhoto3;
+        }
+
         $id = $request->id;
         DB::table('kamar')->where('kamar_id', '=', $id)->update([
             'nama' => $request->name,
             'harga' => $request->price,
             'foto' => $namaFolderPhoto.$namaFilePhoto,
+            'foto2' => $namaPhoto2,
+            'foto3' => $namaPhoto3,
             'deskripsi' => $request->desc,
             'AC' =>$request->exampleRadio,
         ]);

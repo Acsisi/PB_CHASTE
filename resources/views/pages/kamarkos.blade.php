@@ -98,19 +98,27 @@
                         <form action="{{ route('add-kos') }}" method="post" enctype="multipart/form-data">
                         @csrf
                             <div class="mb-3">
-                                <label for="formFile" class="form-label">Masukkan gambar kamar</label>
-                                <input class="form-control" type="file" id="formFile" name="photo[]">
+                                <label for="formFile" class="form-label">Masukkan gambar kamar 1</label>
+                                <input class="form-control" type="file" id="formFile" name="photo[]" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile2" class="form-label">Masukkan gambar kamar 2 (boleh kosong)</label>
+                                <input class="form-control" type="file" id="formFile2" name="photo2[]">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile3" class="form-label">Masukkan gambar kamar 3 (boleh kosong)</label>
+                                <input class="form-control" type="file" id="formFile3" name="photo3[]">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
-                                <input class="form-control" type="text" id="" name="name">
+                                <input class="form-control" type="text" id="" name="name" required>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Harga</label>
-                                <input class="form-control" type="text" id="" name="price">
+                                <input class="form-control" type="text" id="" name="price" required>
                             </div>
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a description here" name="desc" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <textarea class="form-control" placeholder="Leave a description here" name="desc" id="floatingTextarea2" style="height: 100px" required></textarea>
                                 <label for="floatingTextarea2">Deskripsi</label>
                             </div>
                             <div class="form-check">

@@ -23,7 +23,7 @@
         </blockquote>
 
         <figure>
-          <img class="w-1/2 mx-auto object-cover rounded-xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description">
+          {{-- <img class="w-1/2 mx-auto object-cover rounded-xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description"> --}}
           {{-- <div class="grid grid-cols-2 w-full mt-10">
             <div>
                 <img class="w-1/2  object-cover rounded-xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description">
@@ -36,41 +36,21 @@
 
         </figure>
 
-        <div class="container mx-auto">
-            <!-- Slider -->
-            <div data-hs-carousel='{
-                "loadingClasses": "opacity-0"
-            }' class="relative">
-            <div class="hs-carousel relative overflow-hidden w-full min-h-96 bg-white rounded-lg">
-                <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
-                <div class="hs-carousel-slide">
-                    <div class="flex justify-center h-full bg-gray-100 p-6 ">
-                    <span class="self-center text-4xl text-gray-800 transition duration-700">First slide</span>
-                    </div>
-                </div>
-                <div class="hs-carousel-slide">
-                    <div class="flex justify-center h-full bg-gray-200 p-6 ">
-                    <span class="self-center text-4xl text-gray-800 transition duration-700">Second slide</span>
-                    </div>
-                </div>
-                <div class="hs-carousel-slide">
-                    <div class="flex justify-center h-full bg-gray-300 p-6 ">
-                    <span class="self-center text-4xl text-gray-800 transition duration-700">Third slide</span>
-                    </div>
-                </div>
-                </div>
-            </div>
 
-            <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2">
-                <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
-                <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
-                <span class="hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+        {{-- Slider --}}
+        {{-- <div class="h-20"></div> --}}
+        <div class="border grid-rows-2 grid grid-flow-col w-full">
+            <div class="row-span-2">
+                <img src="{{ Storage::url("$kamar->foto") }}" class="object-cover h-96 w-full">
             </div>
+            <div class="">
+                <img src="{{ Storage::url("$kamar->foto2") }}" class="object-cover h-48 w-full">
             </div>
-            <!-- End Slider -->
+            <div class="">
+                <img src="{{ Storage::url("$kamar->foto3") }}" class="object-cover h-48 w-full">
+            </div>
         </div>
-
-
+        {{-- slider  --}}
 
 
         <!-- Icon Blocks -->
@@ -260,7 +240,7 @@
     </div>
   </div>
   <!-- End Blog Article -->
-
+  <script src="./node_modules/preline/dist/preline.js"></script>
 
 
 @endsection

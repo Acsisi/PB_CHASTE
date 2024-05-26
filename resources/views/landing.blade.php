@@ -245,7 +245,7 @@
           <!-- Card -->
           <a class="group rounded-xl overflow-hidden " href="/kos/AC">
             <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-              <img class="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="/kos1.png" alt="Image Description">
+              <img class="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="/adv-cove-1.png" alt="Image Description">
               <span class="absolute top-0 end-0 rounded-se-xl rounded-es-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 ">
                 Paling Populer
               </span>
@@ -269,7 +269,7 @@
           <!-- Card -->
           <a class="group rounded-xl overflow-hidden" href="/kos/Non-AC">
             <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-              <img class="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="/kos2.webp" alt="Image Description">
+              <img class="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="/adv-cove.png" alt="Image Description">
             </div>
 
             <div class="mt-7">

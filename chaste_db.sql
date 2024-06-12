@@ -176,15 +176,15 @@ CREATE TABLE `kamar` (
 --
 
 INSERT INTO `kamar` (`kamar_id`, `user_id`, `penyewa_id`, `nama`, `foto`, `foto2`, `foto3`, `harga`, `deskripsi`, `AC`, `created_at`, `updated_at`, `status`) VALUES
-(1, 1, 12, 'A-11', 'kamar/kamar3.jpg', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan pintu masuk.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 2),
-(2, 1, NULL, 'A-12', 'kamar/kos1.png', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan kamar mandi.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 1),
-(3, 1, NULL, 'A-13', 'kamar/kos1.png', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan tangga naik menuju lantai 2.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 1),
-(4, 1, NULL, 'A-14', 'kamar/kos1.png', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan dispenser air.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 1),
-(5, 1, NULL, 'B-21', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan tangga turun menuju lantai 1.', 'Non-AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 2),
-(6, 1, NULL, 'B-22', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan kamar mandi.', 'Non-AC', '2024-05-13 10:05:17', '2023-12-08 09:14:45', 1),
-(7, 1, NULL, 'B-23', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan dispenser air.', 'Non-AC', '2024-05-13 10:05:17', '2023-12-08 09:14:45', 1),
-(8, 1, NULL, 'B-24', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan sudut.', 'Non-AC', '2024-05-13 10:05:17', '2023-12-08 09:14:45', 1),
-(9, 1, NULL, 'B-6', 'kamar/kamar3.jpg', NULL, NULL, 800000, 'Kamar lantai dua tanpa AC. Mejanya kurang bagus.', 'Non-AC', '2024-05-13 10:05:17', '2024-04-23 14:59:11', 1);
+(1, 1, 12, 'A-11', 'kamar/adv-cove.png', 'kamar/kamar-mandi-kecil.jpeg', 'kamar/Bisnis-Kos-kosan.png', 1200000, 'Kamar lantai satu dengan AC. Dekat dengan pintu masuk.', 'AC', '2024-05-26 13:28:56', '2023-12-08 09:14:45', 2),
+(2, 1, NULL, 'A-12', 'kamar/202206271525-main.cropped_1656318330.jpg', 'kamar/Bisnis-Kos-kosan.png', 'kamar/kamar-mandi-kecil.jpeg', 1200000, 'Kamar lantai satu dengan AC. Dekat dengan kamar mandi.', 'AC', '2024-05-26 13:29:10', '2023-12-08 09:14:45', 1),
+(3, 1, NULL, 'A-13', 'kamar/adv-cove-1.png', 'kamar/Bisnis-Kos-kosan.png', 'kamar/kamar-mandi-kecil.jpeg', 1200000, 'Kamar lantai satu dengan AC. Dekat dengan tangga naik menuju lantai 2.', 'AC', '2024-05-26 13:29:22', '2023-12-08 09:14:45', 1),
+(4, 1, NULL, 'A-14', 'kamar/adv-cove.png', 'kamar/Bisnis-Kos-kosan.png', 'kamar/kamar-mandi-kecil.jpeg', 1200000, 'Kamar lantai satu dengan AC. Dekat dengan dispenser air.', 'AC', '2024-05-26 13:29:37', '2023-12-08 09:14:45', 1),
+(5, 1, NULL, 'B-21', 'kamar/202206271525-main.cropped_1656318330.jpg', 'kamar/kamar-mandi-kecil.jpeg', 'kamar/Bisnis-Kos-kosan.png', 900000, 'Kamar lantai dua tanpa AC. Dekat dengan tangga turun menuju lantai 1.', 'Non-AC', '2024-05-26 13:54:54', '2023-12-08 09:14:45', 2),
+(6, 1, NULL, 'B-22', 'kamar/202206271525-main.cropped_1656318330.jpg', 'kamar/kamar-mandi-kecil.jpeg', 'kamar/Bisnis-Kos-kosan.png', 900000, 'Kamar lantai dua tanpa AC. Dekat dengan kamar mandi.', 'Non-AC', '2024-05-26 13:55:07', '2023-12-08 09:14:45', 1),
+(7, 1, NULL, 'B-23', 'kamar/adv-cove-1.png', 'kamar/kamar-mandi-kecil.jpeg', 'kamar/Bisnis-Kos-kosan.png', 900000, 'Kamar lantai dua tanpa AC. Dekat dengan dispenser air.', 'Non-AC', '2024-05-26 13:55:21', '2023-12-08 09:14:45', 1),
+(8, 1, NULL, 'B-24', 'kamar/adv-cove.png', 'kamar/kamar-mandi-kecil.jpeg', 'kamar/Bisnis-Kos-kosan.png', 900000, 'Kamar lantai dua tanpa AC. Dekat dengan sudut.', 'Non-AC', '2024-05-26 13:55:37', '2023-12-08 09:14:45', 1),
+(9, 1, NULL, 'B-6', 'kamar/Kost-Eksklusif.jpg', 'kamar/kamar-mandi-kecil.jpeg', 'kamar/Bisnis-Kos-kosan.png', 800000, 'Kamar lantai dua tanpa AC. Mejanya kurang bagus.', 'Non-AC', '2024-05-26 13:55:52', '2024-04-23 14:59:11', 1);
 
 -- --------------------------------------------------------
 

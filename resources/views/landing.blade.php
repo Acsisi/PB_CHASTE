@@ -21,7 +21,7 @@
         <!-- End Buttons -->
 
         <!-- Review -->
-        <div class="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
+        {{-- <div class="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
           <!-- Review -->
           <div class="py-5">
             <div class="flex space-x-1">
@@ -96,7 +96,7 @@
             </div>
           </div>
           <!-- End Review -->
-        </div>
+        </div> --}}
         <!-- End Review -->
       </div>
       <!-- End Col -->
@@ -296,7 +296,7 @@
 {{-- end of food order  --}}
 
 {{-- testimonials  --}}
-<div>
+{{-- <div>
     <!-- Testimonials -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
@@ -339,7 +339,7 @@
               </div>
           </div>
           <!-- End Card -->
-        @endforeach
+        @endforeach --}}
         <!-- End listTestimony -->
 
         </div>

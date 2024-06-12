@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 26 Bulan Mei 2024 pada 16.05
--- Versi server: 10.4.25-MariaDB
--- Versi PHP: 8.1.10
+-- Host: localhost
+-- Generation Time: Jun 12, 2024 at 05:52 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,13 +20,16 @@ SET time_zone = "+00:00";
 --
 -- Database: `chaste_db`
 --
+CREATE DATABASE IF NOT EXISTS `chaste_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `chaste_db`;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `d_bulan`
+-- Table structure for table `d_bulan`
 --
 
+DROP TABLE IF EXISTS `d_bulan`;
 CREATE TABLE `d_bulan` (
   `d_bulan_id` int(11) NOT NULL,
   `h_bulan_id` int(11) NOT NULL,
@@ -36,7 +39,7 @@ CREATE TABLE `d_bulan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `d_bulan`
+-- Dumping data for table `d_bulan`
 --
 
 INSERT INTO `d_bulan` (`d_bulan_id`, `h_bulan_id`, `keterangan`, `harga`, `status`) VALUES
@@ -48,9 +51,10 @@ INSERT INTO `d_bulan` (`d_bulan_id`, `h_bulan_id`, `keterangan`, `harga`, `statu
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `d_kamar`
+-- Table structure for table `d_kamar`
 --
 
+DROP TABLE IF EXISTS `d_kamar`;
 CREATE TABLE `d_kamar` (
   `d_kamar_id` int(11) NOT NULL,
   `h_kamar_id` int(11) NOT NULL,
@@ -63,7 +67,7 @@ CREATE TABLE `d_kamar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `d_kamar`
+-- Dumping data for table `d_kamar`
 --
 
 INSERT INTO `d_kamar` (`d_kamar_id`, `h_kamar_id`, `kamar_id`, `harga`, `tgl_mulai`, `foto_ktp`, `foto_kk`, `status`) VALUES
@@ -72,9 +76,10 @@ INSERT INTO `d_kamar` (`d_kamar_id`, `h_kamar_id`, `kamar_id`, `harga`, `tgl_mul
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `h_bulan`
+-- Table structure for table `h_bulan`
 --
 
+DROP TABLE IF EXISTS `h_bulan`;
 CREATE TABLE `h_bulan` (
   `h_bulan_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -86,7 +91,7 @@ CREATE TABLE `h_bulan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `h_bulan`
+-- Dumping data for table `h_bulan`
 --
 
 INSERT INTO `h_bulan` (`h_bulan_id`, `user_id`, `total`, `created_at`, `updated_at`, `status`, `keterangan`) VALUES
@@ -98,9 +103,10 @@ INSERT INTO `h_bulan` (`h_bulan_id`, `user_id`, `total`, `created_at`, `updated_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `h_galon`
+-- Table structure for table `h_galon`
 --
 
+DROP TABLE IF EXISTS `h_galon`;
 CREATE TABLE `h_galon` (
   `h_galon_id` int(11) NOT NULL,
   `penyewa_id` int(11) NOT NULL,
@@ -112,7 +118,7 @@ CREATE TABLE `h_galon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `h_galon`
+-- Dumping data for table `h_galon`
 --
 
 INSERT INTO `h_galon` (`h_galon_id`, `penyewa_id`, `pcs`, `harga`, `created_at`, `updated_at`, `status`) VALUES
@@ -121,9 +127,10 @@ INSERT INTO `h_galon` (`h_galon_id`, `penyewa_id`, `pcs`, `harga`, `created_at`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `h_kamar`
+-- Table structure for table `h_kamar`
 --
 
+DROP TABLE IF EXISTS `h_kamar`;
 CREATE TABLE `h_kamar` (
   `h_kamar_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -135,7 +142,7 @@ CREATE TABLE `h_kamar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `h_kamar`
+-- Dumping data for table `h_kamar`
 --
 
 INSERT INTO `h_kamar` (`h_kamar_id`, `user_id`, `penyewa_id`, `total`, `created_at`, `updated_at`, `status`) VALUES
@@ -144,9 +151,10 @@ INSERT INTO `h_kamar` (`h_kamar_id`, `user_id`, `penyewa_id`, `total`, `created_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kamar`
+-- Table structure for table `kamar`
 --
 
+DROP TABLE IF EXISTS `kamar`;
 CREATE TABLE `kamar` (
   `kamar_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -164,51 +172,27 @@ CREATE TABLE `kamar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kamar`
+-- Dumping data for table `kamar`
 --
 
 INSERT INTO `kamar` (`kamar_id`, `user_id`, `penyewa_id`, `nama`, `foto`, `foto2`, `foto3`, `harga`, `deskripsi`, `AC`, `created_at`, `updated_at`, `status`) VALUES
-(1, 1, 12, 'A-11', 'kamar/adv-cove.png', 'kamar/kamar-mandi-kecil.jpeg', 'kamar/Bisnis-Kos-kosan.png', 1200000, 'Kamar lantai satu dengan AC. Dekat dengan pintu masuk.', 'AC', '2024-05-26 13:28:56', '2023-12-08 09:14:45', 2),
-(2, 1, NULL, 'A-12', 'kamar/202206271525-main.cropped_1656318330.jpg', 'kamar/Bisnis-Kos-kosan.png', 'kamar/kamar-mandi-kecil.jpeg', 1200000, 'Kamar lantai satu dengan AC. Dekat dengan kamar mandi.', 'AC', '2024-05-26 13:29:10', '2023-12-08 09:14:45', 1),
-(3, 1, NULL, 'A-13', 'kamar/adv-cove-1.png', 'kamar/Bisnis-Kos-kosan.png', 'kamar/kamar-mandi-kecil.jpeg', 1200000, 'Kamar lantai satu dengan AC. Dekat dengan tangga naik menuju lantai 2.', 'AC', '2024-05-26 13:29:22', '2023-12-08 09:14:45', 1),
-(4, 1, NULL, 'A-14', 'kamar/adv-cove.png', 'kamar/Bisnis-Kos-kosan.png', 'kamar/kamar-mandi-kecil.jpeg', 1200000, 'Kamar lantai satu dengan AC. Dekat dengan dispenser air.', 'AC', '2024-05-26 13:29:37', '2023-12-08 09:14:45', 1),
-(5, 1, NULL, 'B-21', 'kamar/202206271525-main.cropped_1656318330.jpg', 'kamar/kamar-mandi-kecil.jpeg', 'kamar/Bisnis-Kos-kosan.png', 900000, 'Kamar lantai dua tanpa AC. Dekat dengan tangga turun menuju lantai 1.', 'Non-AC', '2024-05-26 13:54:54', '2023-12-08 09:14:45', 2),
-(6, 1, NULL, 'B-22', 'kamar/202206271525-main.cropped_1656318330.jpg', 'kamar/kamar-mandi-kecil.jpeg', 'kamar/Bisnis-Kos-kosan.png', 900000, 'Kamar lantai dua tanpa AC. Dekat dengan kamar mandi.', 'Non-AC', '2024-05-26 13:55:07', '2023-12-08 09:14:45', 1),
-(7, 1, NULL, 'B-23', 'kamar/adv-cove-1.png', 'kamar/kamar-mandi-kecil.jpeg', 'kamar/Bisnis-Kos-kosan.png', 900000, 'Kamar lantai dua tanpa AC. Dekat dengan dispenser air.', 'Non-AC', '2024-05-26 13:55:21', '2023-12-08 09:14:45', 1),
-(8, 1, NULL, 'B-24', 'kamar/adv-cove.png', 'kamar/kamar-mandi-kecil.jpeg', 'kamar/Bisnis-Kos-kosan.png', 900000, 'Kamar lantai dua tanpa AC. Dekat dengan sudut.', 'Non-AC', '2024-05-26 13:55:37', '2023-12-08 09:14:45', 1),
-(9, 1, NULL, 'B-6', 'kamar/Kost-Eksklusif.jpg', 'kamar/kamar-mandi-kecil.jpeg', 'kamar/Bisnis-Kos-kosan.png', 800000, 'Kamar lantai dua tanpa AC. Mejanya kurang bagus.', 'Non-AC', '2024-05-26 13:55:52', '2024-04-23 14:59:11', 1);
+(1, 1, 12, 'A-11', 'kamar/kamar3.jpg', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan pintu masuk.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 2),
+(2, 1, NULL, 'A-12', 'kamar/kos1.png', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan kamar mandi.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 1),
+(3, 1, NULL, 'A-13', 'kamar/kos1.png', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan tangga naik menuju lantai 2.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 1),
+(4, 1, NULL, 'A-14', 'kamar/kos1.png', NULL, NULL, 1200000, 'Kamar lantai satu dengan AC. Dekat dengan dispenser air.', 'AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 1),
+(5, 1, NULL, 'B-21', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan tangga turun menuju lantai 1.', 'Non-AC', '2024-05-13 10:05:16', '2023-12-08 09:14:45', 2),
+(6, 1, NULL, 'B-22', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan kamar mandi.', 'Non-AC', '2024-05-13 10:05:17', '2023-12-08 09:14:45', 1),
+(7, 1, NULL, 'B-23', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan dispenser air.', 'Non-AC', '2024-05-13 10:05:17', '2023-12-08 09:14:45', 1),
+(8, 1, NULL, 'B-24', 'kamar/kos2.webp', NULL, NULL, 900000, 'Kamar lantai dua tanpa AC. Dekat dengan sudut.', 'Non-AC', '2024-05-13 10:05:17', '2023-12-08 09:14:45', 1),
+(9, 1, NULL, 'B-6', 'kamar/kamar3.jpg', NULL, NULL, 800000, 'Kamar lantai dua tanpa AC. Mejanya kurang bagus.', 'Non-AC', '2024-05-13 10:05:17', '2024-04-23 14:59:11', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `testimony`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `testimony` (
-  `testimony_id` int(11) NOT NULL,
-  `customer_id` int(11) DEFAULT NULL COMMENT 'Guest isi NULL',
-  `nama` varchar(255) NOT NULL DEFAULT 'Guest' COMMENT 'Default = Guest',
-  `isi` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `testimony`
---
-
-INSERT INTO `testimony` (`testimony_id`, `customer_id`, `nama`, `isi`, `created_at`, `updated_at`, `status`) VALUES
-(1, 12, 'Fransisca', 'Kami menemukan layanan luar biasa dengan staf yang unggul! Kami merekomendasikan tempat ini!', '2023-12-08 08:40:58', '2023-12-08 08:40:58', 1),
-(2, 13, 'Arensa', 'Staf sangat ramah dan membantu banyak.', '2023-12-08 08:44:59', '2023-12-08 08:44:59', 1),
-(5, 26, 'Stenlie', 'Saya bertemu dengan pemiliknya, dia sangat baik dan membantu.', '2023-12-08 08:46:14', '2023-12-08 08:46:14', 1);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `user`
---
-
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
@@ -226,7 +210,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `nama`, `ktp`, `foto`, `role`, `no_telp`, `email`, `created_at`, `updated_at`, `status`, `status_galon`) VALUES
@@ -240,14 +224,14 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `nama`, `ktp`, `foto`, `r
 --
 
 --
--- Indeks untuk tabel `d_bulan`
+-- Indexes for table `d_bulan`
 --
 ALTER TABLE `d_bulan`
   ADD PRIMARY KEY (`d_bulan_id`),
   ADD KEY `h_bulan_id` (`h_bulan_id`);
 
 --
--- Indeks untuk tabel `d_kamar`
+-- Indexes for table `d_kamar`
 --
 ALTER TABLE `d_kamar`
   ADD PRIMARY KEY (`d_kamar_id`),
@@ -255,21 +239,21 @@ ALTER TABLE `d_kamar`
   ADD KEY `kamar_id` (`kamar_id`);
 
 --
--- Indeks untuk tabel `h_bulan`
+-- Indexes for table `h_bulan`
 --
 ALTER TABLE `h_bulan`
   ADD PRIMARY KEY (`h_bulan_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `h_galon`
+-- Indexes for table `h_galon`
 --
 ALTER TABLE `h_galon`
   ADD PRIMARY KEY (`h_galon_id`),
   ADD KEY `penyewa_id` (`penyewa_id`);
 
 --
--- Indeks untuk tabel `h_kamar`
+-- Indexes for table `h_kamar`
 --
 ALTER TABLE `h_kamar`
   ADD PRIMARY KEY (`h_kamar_id`),
@@ -277,7 +261,7 @@ ALTER TABLE `h_kamar`
   ADD KEY `penyewa_id` (`penyewa_id`);
 
 --
--- Indeks untuk tabel `kamar`
+-- Indexes for table `kamar`
 --
 ALTER TABLE `kamar`
   ADD PRIMARY KEY (`kamar_id`),
@@ -285,118 +269,99 @@ ALTER TABLE `kamar`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `testimony`
---
-ALTER TABLE `testimony`
-  ADD PRIMARY KEY (`testimony_id`),
-  ADD KEY `h_menu_ibfk_3` (`customer_id`);
-
---
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `d_bulan`
+-- AUTO_INCREMENT for table `d_bulan`
 --
 ALTER TABLE `d_bulan`
   MODIFY `d_bulan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `d_kamar`
+-- AUTO_INCREMENT for table `d_kamar`
 --
 ALTER TABLE `d_kamar`
   MODIFY `d_kamar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT untuk tabel `h_bulan`
+-- AUTO_INCREMENT for table `h_bulan`
 --
 ALTER TABLE `h_bulan`
   MODIFY `h_bulan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `h_galon`
+-- AUTO_INCREMENT for table `h_galon`
 --
 ALTER TABLE `h_galon`
   MODIFY `h_galon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `h_kamar`
+-- AUTO_INCREMENT for table `h_kamar`
 --
 ALTER TABLE `h_kamar`
   MODIFY `h_kamar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT untuk tabel `kamar`
+-- AUTO_INCREMENT for table `kamar`
 --
 ALTER TABLE `kamar`
-  MODIFY `kamar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `kamar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT untuk tabel `testimony`
---
-ALTER TABLE `testimony`
-  MODIFY `testimony_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `d_bulan`
+-- Constraints for table `d_bulan`
 --
 ALTER TABLE `d_bulan`
   ADD CONSTRAINT `d_bulan_ibfk_1` FOREIGN KEY (`h_bulan_id`) REFERENCES `h_bulan` (`h_bulan_id`);
 
 --
--- Ketidakleluasaan untuk tabel `d_kamar`
+-- Constraints for table `d_kamar`
 --
 ALTER TABLE `d_kamar`
   ADD CONSTRAINT `d_kamar_ibfk_1` FOREIGN KEY (`h_kamar_id`) REFERENCES `h_kamar` (`h_kamar_id`),
   ADD CONSTRAINT `d_kamar_ibfk_2` FOREIGN KEY (`kamar_id`) REFERENCES `kamar` (`kamar_id`);
 
 --
--- Ketidakleluasaan untuk tabel `h_bulan`
+-- Constraints for table `h_bulan`
 --
 ALTER TABLE `h_bulan`
   ADD CONSTRAINT `h_bulan_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- Ketidakleluasaan untuk tabel `h_galon`
+-- Constraints for table `h_galon`
 --
 ALTER TABLE `h_galon`
   ADD CONSTRAINT `h_galon_ibfk_1` FOREIGN KEY (`penyewa_id`) REFERENCES `user` (`user_id`);
 
 --
--- Ketidakleluasaan untuk tabel `h_kamar`
+-- Constraints for table `h_kamar`
 --
 ALTER TABLE `h_kamar`
   ADD CONSTRAINT `h_kamar_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `h_kamar_ibfk_2` FOREIGN KEY (`penyewa_id`) REFERENCES `user` (`user_id`);
 
 --
--- Ketidakleluasaan untuk tabel `kamar`
+-- Constraints for table `kamar`
 --
 ALTER TABLE `kamar`
   ADD CONSTRAINT `kamar_ibfk_1` FOREIGN KEY (`penyewa_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `kamar_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
-
---
--- Ketidakleluasaan untuk tabel `testimony`
---
-ALTER TABLE `testimony`
-  ADD CONSTRAINT `testimony_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

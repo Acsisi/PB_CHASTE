@@ -339,14 +339,14 @@
               </div>
           </div>
           <!-- End Card -->
-        @endforeach --}}
+        @endforeach
         <!-- End listTestimony -->
 
         </div>
         <!-- End Grid -->
     </div>
     <!-- End Testimonials -->
-</div>
+</div> --}}
 {{-- end of testimoni  --}}
 
 @endsection

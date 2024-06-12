@@ -33,8 +33,9 @@ class HomeController extends Controller
     }
 
     public function getLanding(){
-        $listTestimony = Testimony::where('status', 1)->orderby('created_at', 'desc')->get();
-        return view('landing', ['listTestimony' => $listTestimony]);
+        // $listTestimony = Testimony::where('status', 1)->orderby('created_at', 'desc')->get();
+        // return view('landing', ['listTestimony' => $listTestimony]);
+        return view('landing');
     }
 
     // public function showtenant()

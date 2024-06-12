@@ -14,7 +14,8 @@ class ReportController extends Controller
             'user_id' => 1,
             'total' => $request->total,
             'status' => 0,
-            'keterangan' => $request->desc
+            'keterangan' => $request->desc,
+            'created_at' => $request->income_date
             //expense status 0
         ]);
 
@@ -23,7 +24,7 @@ class ReportController extends Controller
             'h_bulan_id' => $h_bulan->h_bulan_id,
             'harga' => $request->total,
             'status' => 0,
-            'keterangan' => $request->desc
+            'keterangan' => $request->desc,
         ]);
 
         return redirect('/pengeluaranOwner');
@@ -31,20 +32,74 @@ class ReportController extends Controller
 
     public function addIncome(Request $request){
         if($request->exampleRadio == 1){
-            DB::table('h_kamar')->insert([
-                'user_id' => 1,
-                'penyewa_id' => intval($request->penyewa),
-                'total' => intval($request->total)
-                //status 1 sudah dibayar
+            // DB::table('h_kamar')->insert([
+            //     'user_id' => 1,
+            //     'penyewa_id' => intval($request->penyewa),
+            //     'total' => intval($request->total),
+            //     //status 1 sudah dibayar
+            //     'created_at' => $request->income_date
+            // ]);
+
+            // $hKamarId = DB::table('h_kamar')->insertGetId([
+            //     'user_id' => 1,
+            //     'penyewa_id' => intval($request->penyewa),
+            //     'total' => intval($request->total),
+            //     'created_at' => $request->income_date
+            // ]);
+
+            // $kamarId = DB::table('d_kamar')
+            // ->join('h_kamar', 'd_kamar.h_kamar_id', '=', 'h_kamar.h_kamar_id')
+            // ->where('h_kamar.penyewa_id', $request->penyewa)
+            // ->orderBy('d_kamar.d_kamar_id', 'desc')
+            // ->value('d_kamar.kamar_id'); 
+
+            // DB::table('d_kamar')->insert([
+            //     'h_kamar_id' => $hKamarId,
+            //     'kamar_id' => $kamarId,
+            //     'harga' => intval($request->total)
+            //     //status 1 sudah dibayar
+            // ]);
+
+            // Mengambil data dari request
+            $userId = 1;
+            $penyewaId = intval($request->penyewa);
+            $total = intval($request->total);
+            $incomeDate = $request->income_date;
+
+            // Insert ke tabel h_kamar dan mendapatkan h_kamar_id yang baru diinsertkan
+            $hKamarId = DB::table('h_kamar')->insertGetId([
+                'user_id' => $userId,
+                'penyewa_id' => $penyewaId,
+                'total' => $total,
+                'created_at' => $incomeDate
             ]);
+
+            // Mengambil kamar_id dari pembayaran user sebelumnya di tabel d_kamar
+            $kamarId = DB::table('d_kamar')
+            ->join('h_kamar', 'd_kamar.h_kamar_id', '=', 'h_kamar.h_kamar_id')
+            ->where('h_kamar.penyewa_id', $request->penyewa)
+            ->orderBy('d_kamar.d_kamar_id', 'desc')
+            ->value('d_kamar.kamar_id');
+
+            // Pastikan untuk memeriksa apakah $kamarId ada sebelum insert
+            if ($kamarId !== null) {
+                DB::table('d_kamar')->insert([
+                    'h_kamar_id' => $hKamarId,
+                    'kamar_id' => $kamarId,
+                    'harga' => $total,
+                ]);
+            } else {
+            }
+
         }else{
             DB::table('h_galon')->insert([
                 'penyewa_id' => $request->penyewa2,
                 // 'pcs' => $request->pcs,
                 'pcs' => 1,
                 'harga' => 20000,
-                'status' => 1
-                //status 1 sudah dibayar
+                'status' => 1,
+                //status 1 sudah dibayar,
+                'created_at' => $request->income_date
             ]);
 
             DB::table('user')

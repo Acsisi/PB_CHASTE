@@ -183,6 +183,10 @@
                             <form action="{{ route('add-income') }}" method="post">
                             @csrf
                                 <div class="mb-3">
+                                    <label class="form-label">Pilih tanggal</label>
+                                    <input type="datetime-local" name="income_date" class="form-control" aria-label="Start Date" value="">
+                                </div>
+                                <div class="mb-3">
                                     <label class="form-label">Jumlah pemasukan</label>
                                     <input class="form-control" type="number" id="txtPemasukan" name="total">
                                 </div>
@@ -249,6 +253,10 @@
                         <form action="{{ route('add-expense') }}" method="post">
                         @csrf
                             <div class="mb-3">
+                                <label class="form-label">Pilih tanggal</label>
+                                <input type="datetime-local" name="income_date" class="form-control" aria-label="Start Date" value="">
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label">Jumlah Pembayaran</label>
                                 <input class="form-control" type="number" id="" name="total">
                             </div>
@@ -264,7 +272,6 @@
                             <div class="mb-3 my-3">
                                 <button class="btn btn-primary">Tambah</button>
                             </div>
-
                         </form>
                     </div>
                 </div>

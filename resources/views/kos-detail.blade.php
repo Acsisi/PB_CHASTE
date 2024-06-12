@@ -12,7 +12,7 @@
 
         <blockquote class="text-start p-4 sm:px-7">
           <p class="text-9xl font-semibold mt-5 text-gray-800 md:text-2xl md:leading-normal xl:text-4xl xl:leading-normal ">
-            Room {{$kamar->nama}}
+            Kamar {{$kamar->nama}}
           </p>
           <p class="mt-1 text-2xl text-gray-800 ">
             Rp.
@@ -23,8 +23,34 @@
         </blockquote>
 
         <figure>
-          <img class="w-1/2 m-auto object-cover rounded-xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description">
+          {{-- <img class="w-1/2 mx-auto object-cover rounded-xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description"> --}}
+          {{-- <div class="grid grid-cols-2 w-full mt-10">
+            <div>
+                <img class="w-1/2  object-cover rounded-xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description">
+            </div>
+
+            <div>
+                <img class="w-1/2  object-cover rounded-xl" src="{{ Storage::url("$kamar->foto") }}" alt="Image Description">
+            </div>
+          </div> --}}
+
         </figure>
+
+
+        {{-- Slider --}}
+        {{-- <div class="h-20"></div> --}}
+        <div class="border grid-rows-2 grid grid-flow-col w-full">
+            <div class="row-span-2">
+                <img src="{{ Storage::url("$kamar->foto") }}" class="object-cover h-96 w-full">
+            </div>
+            <div class="">
+                <img src="{{ Storage::url("$kamar->foto2") }}" class="object-cover h-48 w-full">
+            </div>
+            <div class="">
+                <img src="{{ Storage::url("$kamar->foto3") }}" class="object-cover h-48 w-full">
+            </div>
+        </div>
+        {{-- slider  --}}
 
 
         <!-- Icon Blocks -->
@@ -35,8 +61,8 @@
         <i class="fa-solid fa-money-bill fa-2x flex-shrink-0 size-8 text-gray-800 mt-4 me-6" ></i>
         <div>
           <div>
-            <h3 class="block font-bold text-gray-800 ">Harga dijamin murah</h3>
-            <p class="text-gray-600 ">Bebas biaya biaya lain seperti biaya air dan listrik</p>
+            <h3 class="block font-bold text-gray-800 ">Harga Terjangkau</h3>
+            <p class="text-gray-600 ">Gratis biaya listrik dan air</p>
           </div>
 
 
@@ -51,8 +77,8 @@
 
         <div>
           <div>
-            <h3 class="block font-bold text-gray-800">Foodcourt didalam kos</h3>
-            <p class="text-gray-600">Foodcourt dengan berbagai pilihan stall di dalam area kos</p>
+            <h3 class="block font-bold text-gray-800">Kantin di Area Kost</h3>
+            <p class="text-gray-600">Dengan beberapa pilihan tenant</p>
           </div>
 
 
@@ -66,109 +92,106 @@
 
         <div>
           <div>
-            <h3 class="block font-bold text-gray-800">Lokasi strategis </h3>
-            <p class="text-gray-600">Lokasi strategis di tengah kota Surabaya</p>
+            <h3 class="block font-bold text-gray-800">Lokasi Strategis</h3>
+            <p class="text-gray-600">Terletak di pusat Kota Surabaya</p>
           </div>
 
         </div>
       </a>
       <!-- End Card -->
 
-      <div class="">
-        <h3 class="text-2xl font-semibold mt-5">Fasilitas Kamar : </h3>
-        <ul class="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 mt-5">
-
-            @php
-              if($kamar->AC == "AC"){
-                echo '<li class="flex space-x-3">
-                      <span class="h-5 w-5 flex justify-center items-center rounded-full bg-blue-600 text-white">
-                          <svg class="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                      </span>
-
-                      <span class="text-gray-800">
-                          AC
-                      </span>
-                      </li>';
-              }
-            @endphp
-
-            <li class="flex space-x-3">
-                <i class="fa-solid fa-bed"></i>
-            <span class="text-gray-800">
-                Bed
-            </span>
-            </li>
-
-            <li class="flex space-x-3">
-            <span class="h-5 w-5 flex justify-center items-center rounded-full bg-blue-600 text-white">
-                <svg class="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-            <span class="text-gray-800">
-                Desk
-            </span>
-            </li>
-
-            <li class="flex space-x-3">
-            <span class="h-5 w-5 flex justify-center items-center rounded-full bg-blue-600 text-white">
-                <svg class="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-            <span class="text-gray-800">
-                Cupboard
-            </span>
-            </li>
-        </ul>
-
-        <h3 class="text-2xl font-semibold mt-5">Fasilitas Umum : </h3>
-        <ul class="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 mt-5">
-
-            @php
-              if($kamar->AC == "AC"){
-                echo '<li class="flex space-x-3">
-                      <span class="h-5 w-5 flex justify-center items-center rounded-full bg-blue-600 text-white">
-                          <svg class="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                      </span>
-
-                      <span class="text-gray-800">
-                          AC
-                      </span>
-                      </li>';
-              }
-            @endphp
-
-            <li class="flex space-x-3">
-                <i class="fa-solid fa-bed"></i>
-            <span class="text-gray-800">
-                Bed
-            </span>
-            </li>
-
-            <li class="flex space-x-3">
-            <span class="h-5 w-5 flex justify-center items-center rounded-full bg-blue-600 text-white">
-                <svg class="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-            <span class="text-gray-800">
-                Desk
-            </span>
-            </li>
-
-            <li class="flex space-x-3">
-            <span class="h-5 w-5 flex justify-center items-center rounded-full bg-blue-600 text-white">
-                <svg class="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-            <span class="text-gray-800">
-                Cupboard
-            </span>
-            </li>
-        </ul>
-
-      </div>
     </div>
 
-    <h3 class="text-2xl font-semibold mt-5">Maps : </h3>
-    <div class="grid grid-cols-2 gap-x-10 mt-10">
-        <img class="w-full object-cover rounded-xl" src="{{ Storage::url("/kamar/GPS.png") }}" alt="">
+    <div class="grid grid-cols-2 w-full mt-10">
+      <div class="">
+          <h3 class="text-2xl font-semibold mt-5">Fasilitas Kamar: </h3>
+          <ul class="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 mt-5">
 
-        <img class="w-full object-cover rounded-xl" src="{{ Storage::url("/kamar/LOC.png") }}" alt="">
+            @if ($kamar->AC == "AC")
+            <li class="flex space-x-3">
+                <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                  <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/aircon.png") }}" alt="">
+                </span>
+
+                <span class="text-gray-800">
+                    AC
+                </span>
+            </li>
+            @endif
+            <li class="flex space-x-3">
+            <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/double-bed.png") }}" alt="">
+            </span>
+            <span class="text-gray-800">
+                Tempat Tidur
+            </span>
+            </li>
+
+            <li class="flex space-x-3">
+            <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/desk.png") }}" alt="">
+            </span>
+            <span class="text-gray-800">
+                Meja Tulis
+            </span>
+            </li>
+
+            <li class="flex space-x-3">
+            <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/cupboard.png") }}" alt="">
+            </span>
+            <span class="text-gray-800">
+                Lemari
+            </span>
+            </li>
+          </ul>
+      </div>
+      <div class="">
+          <h3 class="text-2xl font-semibold mt-5">Fasilitas Publik: </h3>
+          <ul class="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 mt-5">
+              <li class="flex space-x-3">
+              <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                  <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/rice.png") }}" alt="">
+              </span>
+              <span class="text-gray-800">
+                  Nasi Gratis Setiap Hari
+              </span>
+              </li>
+
+              <li class="flex space-x-3">
+                <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                    <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/motorcycle.png") }}" alt="">
+                </span>
+                <span class="text-gray-800">
+                  Parkir Sepeda Motor
+                </span>
+                </li>
+
+              <li class="flex space-x-3">
+              <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                  <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/shower.png") }}" alt="">
+              </span>
+              <span class="text-gray-800">
+                  Kamar Mandi
+              </span>
+              </li>
+
+              <li class="flex space-x-3">
+              <span class="h-5 w-5 flex justify-center items-center rounded-full ">
+                  <img class="flex-shrink-0 h-5.5 w-5.5" src="{{ Storage::url("/kamar/kitchen-set.png") }}" alt="">
+              </span>
+              <span class="text-gray-800">
+                  Dapur
+              </span>
+              </li>
+          </ul>
+      </div>
+    </div>
+    <h3 class="text-2xl font-semibold mt-10">Maps : </h3>
+    <div class="grid grid-cols-2 gap-x-10 mt-10">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.5508163972804!2d112.75609507500002!3d-7.291835892715616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fbe715469163%3A0x4c971e01042a26c5!2sChaste%20Kost%20%26%20Pujasera!5e0!3m2!1sen!2sid!4v1713946914959!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" class="w-full object-cover rounded-xl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <img class="w-full object-cover rounded-xl" src="{{ Storage::url("/kamar/loc.png") }}" alt="">
 
     </div>
 
@@ -185,12 +208,23 @@
 
       <!-- End Content -->
       {{-- button  --}}
-      @if ($kamar->penyewa_id == NULL)
+      @php
+        use App\Models\Kamar;
+        $cekKamar = null;
+        if(Session::get('login_id')) $cekKamar = Kamar::where('penyewa_id', Session::get('login_id'))->first();
+      @endphp
+      @if ($cekKamar != null)
+      <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-10" style="pointer-events: none;">
+        <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-slate-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="kos-invoice">
+          Anda Sudah Sewa Kamar
+        </a>
+      </div>
+      @elseif ($kamar->penyewa_id == NULL)
       <form action="{{ route('payment') }}" method="post">
         @csrf
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-10">
           <button type="submit" name="id" value="{{$kamar->kamar_id}}" class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-            Make Reservation
+            Buat Reservasi
             <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
           </button>
         </div>
@@ -198,7 +232,7 @@
       @else
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-10" style="pointer-events: none;">
           <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-slate-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="kos-invoice">
-            This Room is Taken
+            Kamar ini Sudah Diambil
           </a>
         </div>
       @endif
@@ -206,7 +240,7 @@
     </div>
   </div>
   <!-- End Blog Article -->
-
+  <script src="./node_modules/preline/dist/preline.js"></script>
 
 
 @endsection

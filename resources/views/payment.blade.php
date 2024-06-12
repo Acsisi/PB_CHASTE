@@ -14,6 +14,9 @@
 <form id="paymentForm" action="{{ route('payment-success') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="center" style="border: 2px solid #ccc; padding: 10px 0px 20px 20px;">
+        <a href="{{ URL::previous() }}" style="margin-top: -50px;" class="absolute top-0 right-0 transform py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-black bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+            Kembali
+        </a>
         <p class="mt-1 text-black font-medium">
             {{-- Bayar Rp{{number_format($kamar->harga , 0, ',', '.')}} untuk kamar kos {{$kamar->nama}}? --}}
             <p style="font-size: 24px;margin-bottom:10px;"><b>Rp{{number_format($kamar->harga , 0, ',', '.')}}/bulan</b></p>
@@ -78,36 +81,36 @@
                 .then(response => {
                     if (response.ok) {
                         // Handle successful payment response
-                        alert("Payment successful!"); 
+                        alert("Pembayaran berhasil!"); 
                         console.log(result);
                         window.location.href = '/payment/success';
                     } else {
                         // Handle payment error
-                        alert("Payment failed!");
+                        alert("Pembayaran gagal!");
                         console.log(result);
                         window.location.href = '/payment/failed';
                     }
                 })
                 .catch(error => {
                     // Handle fetch error
-                    alert("Error processing payment.");
+                    alert("Error memproses pembayaran.");
                     console.error('Error:', error);
                 });
             },
             onPending: function (result) {
                 // Handle pending payment
-                alert("Waiting for payment confirmation.");
+                alert("Menunggu konfirmasi pembayaran.");
                 console.log(result);
             },
             onError: function (result) {
                 // Handle payment error
-                alert("Payment failed!");
+                alert("Pembayaran gagal!");
                 console.log(result);
                 window.location.href = '/payment/failed';
             },
             onClose: function () {
                 // Handle closure of payment popup
-                alert('Payment process closed without completing the transaction');
+                alert('Proses pembayaran ditutup tanpa menyelesaikan transaksi');
             }
         });
     });

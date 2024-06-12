@@ -8,13 +8,13 @@
     <!-- Grid -->
     <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
       <div>
-        <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight">Exclusivity in Everyday Living at <span class="text-blue-600">Chaste</span></h1>
-        <p class="mt-3 text-lg text-gray-800">Explore exclusive living where every detail is designed for your needs. With affordable price, top-notch service, and a prime location, .</p>
+        <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight">Eksklusivitas Hidup Sehari-hari di <span class="text-blue-600">Chaste</span></h1>
+        <p class="mt-3 text-lg text-gray-800">Jelajahi kehidupan eksklusif di mana setiap detail dirancang untuk kebutuhan Anda. Dengan harga terjangkau, pelayanan terbaik, dan lokasi prima.</p>
 
         <!-- Buttons -->
         <div class="mt-7 grid gap-3 w-full sm:inline-flex">
           <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="#browse-kos">
-            Browse Available Rooms
+            Telusuri Kamar yang Tersedia
             <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
           </a>
         </div>
@@ -43,7 +43,7 @@
             </div>
 
             <p class="mt-3 text-sm text-gray-800">
-              <span class="font-bold">5</span> /5 - from 2k reviews
+              <span class="font-bold">5</span> /5 - dari 2k reviews
             </p>
 
             <div class="mt-5">
@@ -83,7 +83,7 @@
             </div>
 
             <p class="mt-3 text-sm text-gray-800">
-              <span class="font-bold">4.8</span> /5 - from 5k reviews
+              <span class="font-bold">4.8</span> /5 - dari 5k reviews
             </p>
 
             <div class="mt-5">
@@ -167,8 +167,8 @@
 
             </div>
             <div class="mt-5">
-            <h3 class="group-hover:text-gray-600 text-lg font-semibold text-gray-800 ">FnB Tenants</h3>
-            <p class="mt-1 text-gray-600 ">Providing a diverse array of culinary options to explore and enjoy.</p>
+            <h3 class="group-hover:text-gray-600 text-lg font-semibold text-gray-800 ">Tenant FnB</h3>
+            <p class="mt-1 text-gray-600 ">Menyediakan beragam pilihan kuliner untuk dinikmati</p>
             </div>
         </a>
         <!-- End Icon Block -->
@@ -188,8 +188,8 @@
 
             </div>
             <div class="mt-5">
-            <h3 class="group-hover:text-gray-600 text-lg font-semibold text-gray-800 ">Accessible</h3>
-            <p class="mt-1 text-gray-600 ">Strategically located in the heart of the city</p>
+            <h3 class="group-hover:text-gray-600 text-lg font-semibold text-gray-800 ">Mudah Diakses</h3>
+            <p class="mt-1 text-gray-600 ">Berlokasi strategis di pusat kota</p>
             </div>
         </a>
         <!-- End Icon Block -->
@@ -207,8 +207,8 @@
 
             </div>
             <div class="mt-5">
-            <h3 class="group-hover:text-gray-600 text-lg font-semibold text-gray-800 ">Affordable Price</h3>
-            <p class="mt-1 text-gray-600 ">We offers affordable options, making it a budget-friendly choice</p>
+            <h3 class="group-hover:text-gray-600 text-lg font-semibold text-gray-800 ">Harga Terjangkau</h3>
+            <p class="mt-1 text-gray-600 ">Kami menawarkan opsi yang terjangkau, menjadikannya pilihan yang ramah dompet</p>
             </div>
         </a>
         <!-- End Icon Block -->
@@ -220,8 +220,8 @@
 
             </div>
             <div class="mt-5">
-            <h3 class="group-hover:text-gray-600 text-lg font-semibold text-gray-800 ">24/7 Support</h3>
-            <p class="mt-1 text-gray-600 ">Contact us 24 hours a day, 7 days a week</p>
+            <h3 class="group-hover:text-gray-600 text-lg font-semibold text-gray-800 ">Dukungan 24/7</h3>
+            <p class="mt-1 text-gray-600 ">Hubungi kami 24 jam sehari, 7 hari seminggu</p>
             </div>
         </a>
         <!-- End Icon Block -->
@@ -235,8 +235,8 @@
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <!-- Title -->
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-          <h2 id="browse-kos" class="text-2xl font-bold md:text-4xl md:leading-tight">Room Type</h2>
-          <p class="mt-1 text-gray-600 ">The room options include only two types, providing a choice between two distinct accommodations.</p>
+          <h2 id="browse-kos" class="text-2xl font-bold md:text-4xl md:leading-tight">Tipe Kamar</h2>
+          <p class="mt-1 text-gray-600 ">Pilihan kamar hanya mencakup dua tipe, memberikan pilihan antara dua akomodasi berbeda.</p>
         </div>
         <!-- End Title -->
 
@@ -245,21 +245,21 @@
           <!-- Card -->
           <a class="group rounded-xl overflow-hidden " href="/kos/AC">
             <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-              <img class="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="/kos1.png" alt="Image Description">
+              <img class="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="/adv-cove-1.png" alt="Image Description">
               <span class="absolute top-0 end-0 rounded-se-xl rounded-es-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 ">
-                Most Popular
+                Paling Populer
               </span>
             </div>
 
             <div class="mt-7">
               <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600">
-                AC Room
+                Kamar AC
               </h3>
               <p class="mt-3 text-gray-800">
-                Escape the heat and experience ultimate comfort in our AC room, where cool breezes and relaxation await you
+                Bebaskan diri dari panas dan rasakan kenyamanan maksimal di ruangan ber-AC kami, di mana angin sejuk dan relaksasi menanti Anda
               </p>
               <p class="mt-5 inline-flex items-center gap-x-1 text-blue-600 decoration-2 group-hover:underline font-medium">
-                View More
+                Lihat Lebih Lanjut
                 <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
               </p>
             </div>
@@ -269,18 +269,18 @@
           <!-- Card -->
           <a class="group rounded-xl overflow-hidden" href="/kos/Non-AC">
             <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-              <img class="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="/kos2.webp" alt="Image Description">
+              <img class="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="/adv-cove.png" alt="Image Description">
             </div>
 
             <div class="mt-7">
               <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600">
-                Non-AC Room
+                Kamar Tanpa AC
               </h3>
               <p class="mt-3 text-gray-800">
-                Embrace the natural charm of our cozy room, perfect for those seeking a lower cost room
+                Nikmati pesona alami dari kamar kami yang nyaman, cocok bagi mereka yang mencari kamar dengan biaya lebih rendah
               </p>
               <p class="mt-5 inline-flex items-center gap-x-1 text-blue-600 decoration-2 group-hover:underline font-medium">
-                View More
+                Lihat Lebih Lanjut
                 <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
               </p>
             </div>
@@ -300,8 +300,8 @@
     <!-- Testimonials -->
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Testimonials</h2>
-            <p class="mt-1 text-gray-600 ">What our customer says</p>
+            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Testimoni</h2>
+            <p class="mt-1 text-gray-600 ">Apa yang dikatakan customer kami</p>
         </div>
         <!-- Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -317,7 +317,7 @@
               $deskripsi = "Beli Makan";
             }
             else{
-              $deskripsi = "Room Renter";
+              $deskripsi = "Sewa Kamar";
             }
           @endphp
           <!-- Card -->

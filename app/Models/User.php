@@ -75,10 +75,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\H_Tenant', 'user_id', 'user_id');
     }
     public function memiliki_h_kamar(){
-        return $this->hasMany('App\Models\H_Tenant', 'user_id', 'user_id');
+        return $this->hasMany('App\Models\H_Kamar', 'user_id', 'user_id');
     }
     public function memiliki_h_bulan(){
-        return $this->hasMany('App\Models\H_Tenant', 'user_id', 'user_id');
+        return $this->hasMany('App\Models\H_Bulan', 'user_id', 'user_id');
     }
 
     public function memiliki_h_menu_customer(){
@@ -88,6 +88,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\H_Tenant', 'penyewa_id', 'user_id');
     }
     public function memiliki_h_kamar_penyewa(){
-        return $this->hasMany('App\Models\H_Tenant', 'penyewa_id', 'user_id');
+        return $this->hasMany('App\Models\H_Kamar', 'penyewa_id', 'user_id');
+    }
+    public function memiliki_h_galon(){
+        return $this->hasMany('App\Models\H_Galon', 'penyewa_id', 'user_id');
     }
 }

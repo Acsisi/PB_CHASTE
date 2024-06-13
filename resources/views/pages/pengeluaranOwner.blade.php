@@ -2,6 +2,12 @@
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Laporan Keuangan'])
+    <style>
+    ::-webkit-scrollbar {
+        width: 8px; /* Width of the scrollbar */
+        background-color: #ccc; /* Make scrollbar background transparent */
+    }
+    </style>
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12"">
@@ -44,7 +50,7 @@
                         $totalSum = $listPengeluaran->sum('total');
                         $listUser= User::where('role', 2)->get();
                     @endphp
-                    <div class="card-body pt-4 p-3 " style="height: 300px; overflow-y: auto;">
+                    <div class="card-body pt-4 p-3 " style="height: 300px; overflow-y: auto;border: 1px solid #ccc;">
                         @foreach($listPengeluaran as $key=>$d)
                         @php
                             $timestamp = $d->updated_at;
@@ -69,7 +75,7 @@
                     </div>
                     <div class="pb-0 px-3">
                         <div>
-                            <h6 class="mb-0">Total Pengeluaran : {{ $totalSum }}</h6>
+                            <h6 class="mb-0">Total Pengeluaran : Rp{{ number_format($totalSum, 0, ',', '.') }}</h6>
                         </div>
                     </div>
                 </div>
@@ -117,7 +123,7 @@
                         $totalSumKamar = $listSewaKamar->sum('total');
                         $totalSumGalon = $listSewaGalon->sum('harga');
                     @endphp
-                    <div class="card-body pt-4 p-3" style="height: 300px; overflow-y: auto;">
+                    <div class="card-body pt-4 p-3" style="height: 300px; overflow-y: auto;border: 1px solid #ccc;">
                         <!-- Display data from H_Kamar -->
                         @foreach($listSewaKamar as $key=>$d)
                             @php
@@ -164,8 +170,8 @@
                     </div>
                     <div class="pb-0 px-3">
                         <div>
-                            <h6 class="mb-0">Total Pemasukan Kamar: {{ $totalSumKamar }}</h6>
-                            <h6 class="mb-0">Total Pemasukan Galon: {{ $totalSumGalon }}</h6>
+                            <h6 class="mb-0">Total Pemasukan Kamar: {{ number_format($totalSumKamar, 0, ',', '.') }}</h6>
+                            <h6 class="mb-0">Total Pemasukan Galon: {{ number_format($totalSumGalon, 0, ',', '.') }}</h6>
                         </div>
                     </div>
                 </div>
@@ -177,7 +183,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <div class="card-body pt-4 p-3 " style="height: 300px; overflow-y: auto;">
+                        <!-- <div class="card-body pt-4 p-3 " style="height: 300px; overflow-y: auto;"> -->
                             <h1></h1>
                             <h6>Tambah Pemasukan</h6>
                             <form action="{{ route('add-income') }}" method="post">
@@ -241,9 +247,9 @@
                                     <button class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
-                        </div>
+                        <!-- </div> -->
                     </div>
-                </div>
+                </div>  
             </div>
             <div class="col-6">
                 <div class="card">
@@ -272,6 +278,7 @@
                             <div class="mb-3 my-3">
                                 <button class="btn btn-primary">Tambah</button>
                             </div>
+                            <br>    
                         </form>
                     </div>
                 </div>

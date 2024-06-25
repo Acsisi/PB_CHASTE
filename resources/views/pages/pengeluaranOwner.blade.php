@@ -170,8 +170,8 @@
                     </div>
                     <div class="pb-0 px-3">
                         <div>
-                            <h6 class="mb-0">Total Pemasukan Kamar: {{ number_format($totalSumKamar, 0, ',', '.') }}</h6>
-                            <h6 class="mb-0">Total Pemasukan Galon: {{ number_format($totalSumGalon, 0, ',', '.') }}</h6>
+                            <h6 class="mb-0">Total Pemasukan Kamar: Rp{{ number_format($totalSumKamar, 0, ',', '.') }}</h6>
+                            <h6 class="mb-0">Total Pemasukan Galon: Rp{{ number_format($totalSumGalon, 0, ',', '.') }}</h6>
                         </div>
                     </div>
                 </div>
